@@ -1,0 +1,33 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="compare-comply" audience="service" href="/docs/services/compare-comply/index.html"}
+Compare and Comply: Beta
+
+    {: .navgroup id="learn"}
+    index.md
+    getting-started.md
+    parsing.md
+    schema.md
+    doc_structure.md
+    {: .navgroup-end}
+
+    {: .navgroup id="howto"}
+    compare.md
+    tables.md
+    html_convert.md    
+    feedback.md
+    tooling.md
+    batching.md    
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    information-security.md
+    [API Docs](https://console.bluemix.net/apidocs/compare-comply)
+    
+
+    {: .navgroup-end}
+
+    {: .navgroup id="help"}
+    relnotes.md
+    {: .navgroup-end}
