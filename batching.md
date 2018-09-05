@@ -220,19 +220,19 @@ The method returns a JSON object that provides the status of the specified batch
 ```
 {: screen}
 
-## Add documents to a batch request
+## Rescanning the input bucket
 {: #put-add-batch}
 
-You can add documents to a batch request by using the `PUT /v1/batches/{batch_id}` method with the `add_documents` action. The batch request must already exist and have a status of either `pending` or `active`. The method has no effect on batch requests with a status of `completed` or `canceled`. When you run this method, the service scans the input bucket for documents that have been added or updated since the batch was created or since the last scan.
+You can have the service check for new documents in the input bucket by using the `PUT /v1/batches/{batch_id}` method with the `rescan` action. The batch request must already exist and have a status of either `pending` or `active`. The method has no effect on batch requests with a status of `completed` or `canceled`. When you run this method, the service scans the input bucket for documents that have been added or updated since the batch was created or since the last scan.
 
 In a `bash` shell or equivalent environment such as Cygwin, use the `PUT /v1/batches/{batch_id}` method to cancel a batch processing request. The method takes the following input parameters:
-  - `action` (**required** `string`): The action to be performed by the method. To add documents to a batch request, use the `add_documents` action.
-  - `id` (**required** `string`): The `batch_id` of the batch request to which you want to add documents. Obtain the `batch_id` by using the `GET /v1/batches` method as described in [Get a list of submitted batch requests](#get-list-batch).  
+  - `action` (**required** `string`): The action to be performed by the method. To add documents to a batch request, use the `rescan` action.
+  - `id` (**required** `string`): The `batch_id` of the batch request for which you want to rescan the input bucket. Obtain the `batch_id` by using the `GET /v1/batches` method as described in [Get a list of submitted batch requests](#get-list-batch).  
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
 
 ```bash
 curl -X PUT -u "apikey":"{apikey_value}" \ 
-https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-08-24&id=0a7f8ab8-97a0-4b67-9fea-feacafbb0b20&action=add_documents
+https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-08-24&id=0a7f8ab8-97a0-4b67-9fea-feacafbb0b20&action=rescan
 ```
 {: codeblock}
 
