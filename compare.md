@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018
-lastupdated: "2018-08-29"
+lastupdated: "2018-09-06"
 
 ---
 
@@ -47,7 +47,7 @@ curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data"
 If you are submitting JSON files instead of PDF files for comparison, specify the media type for the JSON files as follows:
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file1=@/Users/Downloads/{file1}.json;type=application/json" -F "file2=@/Users/Downloads/{file2}.json;type=application/json" -F file1_label="document_1" -F file2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/compare?version=2018-08-24
+curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file1=@/Users/Downloads/{file1}.json;type=application/json" -F "file2=@/Users/Downloads/{file2}.json;type=application/json" -F file1_label="document_1" -F file2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-08-24
 ```
 {: pre}
 
