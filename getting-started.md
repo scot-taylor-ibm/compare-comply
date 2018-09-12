@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-30"
+lastupdated: "2018-09-07"
 
 ---
 
@@ -50,8 +50,8 @@ Identify appropriate documents to analyze. Compare and Comply has been designed 
   You can now submit PDF files that have been scanned and processed by an optical character reader (OCR).
   {: tip}
 
-- Files are no larger than 1.5 MB in size.
-- Secure PDFs (with a password to open) and editing restricted PDFs (with a password to edit) cannot be processed.
+- Files can be up to 1.5 MB in size.
+- Secure PDFs (with a password to open) and restricted PDFs (with a password to edit) cannot be processed.
 
 ## Step 2: Classify a contract's elements
 {: #parse_contract}
