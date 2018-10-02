@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-29"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-08-29"
 # Using the feedback APIs
 {: #feedback}
 
-Subject-matter experts (SMEs) can use the IBM Watson Compare and Comply service's feedback APIs to provide feedback on a parsed document. An SME can provide feedback on any element that has been labeled by the service or by other SMEs. The feedback is retained in the document and can be reviewed and revised at a later time. The feedback APIs enable users to submit, get, and delete feedback.
+Users, preferably subject-matter experts (SMEs), can use the IBM Watson Compare and Comply service's feedback APIs to provide feedback on a parsed document. You can provide feedback on any element that has been labeled by the service. The feedback is associated with the document for future review and consideration. The feedback APIs enable users to submit, get, and delete feedback.
 
 **Important:** Feedback is not immediately incorporated into the training model, nor is it guaranteed to be incorporated at a later date. Instead, submitted feedback is used to suggest future updates to the training model.
 
@@ -43,7 +43,8 @@ Observe the following warnings and precautions when working with the feedback AP
   - Users of the feedback API must be able to provide accurate, consistent, and professionally informed feedback on documents. 
   - Incorrect feedback can provide inaccurate results and can also remain in the document to cause future problems. 
   - Exercise extreme caution if you are using the `POST` or `DELETE` methods.
-  - The `GET` methods cannot change feedback that has been added to a document, but the unauthorized use of a `GET` method on a confidential document can potentially result in information being exposed to unauthorized users.
+  - You cannot change posted feedback. You can, however, delete it and replace it by reposting.
+  - The unauthorized use of a `GET` method on a confidential document can potentially result in information being exposed to unauthorized users.
 
 ## Steps
 {: #feedback_steps}
@@ -92,7 +93,6 @@ In a `bash` shell or equivalent environment such as Cygwin, issue the following 
               "nature": string, # required, empty string is allowed
               "party": string, # required, empty string is allowed
             },
-            "assurance": string, # optional, empty string is allowed
             "provenance": [ # required, empty array is allowed
               {
                 "id": string, # required
@@ -103,7 +103,6 @@ In a `bash` shell or equivalent environment such as Cygwin, issue the following 
         "categories": [ # required, empty array is allowed
           {
             "label": string, # required, empty string is not allowed,
-            "assurance": string, # optional, empty string is allowed
             "provenance": [ # required, empty array is allowed
               {
                 "id": string, # required
@@ -165,7 +164,6 @@ https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-0
             "nature": "Obligation",
             "party": "IBM"
           },
-          "assurance": "High",
           "provenance": [
             {
               "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -180,7 +178,6 @@ https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-0
             "nature": "End User",
             "party": "Exclusion"
           },
-          "assurance": "High",
           "provenance": [
             {
               "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -249,7 +246,6 @@ The output of the command resembles the following.
             "nature": "Obligation",
             "party": "IBM"
           },
-          "assurance": "High",
           "provenance": [
             {
               "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -265,7 +261,6 @@ The output of the command resembles the following.
             "nature": "End User",
             "party": "Exclusion"
           },
-          "assurance": "High",
           "provenance": [
             {
               "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -380,7 +375,6 @@ The output of the command is a JSON array resembling the following.
               "nature": "Obligation",
               "party": "IBM"
             },
-            "assurance": "High",
             "provenance": [
               {
                 "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -396,7 +390,6 @@ The output of the command is a JSON array resembling the following.
               "nature": "End User",
               "party": "Exclusion"
             },
-            "assurance": "High",
             "provenance": [
               {
                 "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -473,7 +466,6 @@ The output of the command is a JSON array resembling the following.
               "nature": "Obligation",
               "party": "FPL"
             },
-            "assurance": "High",
             "provenance": [
               {
                 "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -489,7 +481,6 @@ The output of the command is a JSON array resembling the following.
               "nature": "End User",
               "party": "Exclusion"
             },
-            "assurance": "High",
             "provenance": [
               {
                 "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -594,7 +585,6 @@ The command returns output similar to the following:
               "nature": "Obligation",
               "party": "IBM"
             },
-            "assurance": "High",
             "provenance": [
               {
                 "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
@@ -608,7 +598,6 @@ The command returns output similar to the following:
         "categories": [
           {
             "label": "obligation",
-            "assurance": "High",
             "provenance": [
               {
                 "id": "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"

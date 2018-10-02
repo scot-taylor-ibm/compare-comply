@@ -23,7 +23,7 @@ Compare and Comply: Beta
 
     {: .navgroup id="reference"}
     information-security.md
-    [API Docs](https://console.bluemix.net/apidocs/compare-comply)
+    [API Docs](/apidocs/compare-comply)
     
 
     {: .navgroup-end}
