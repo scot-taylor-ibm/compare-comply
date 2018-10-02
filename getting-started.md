@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-07"
+lastupdated: "2018-09-12"
 
 ---
 
@@ -120,7 +120,6 @@ Each object in the `elements` array describes an element of the contract that Co
   "categories": [
     {
       "label": "Communication",
-      "assurance": "High",
       "provenance": [
         {
           "id": "C7xhbsepUodh09zmJdUXSvYZCdixx00wFyCZuAnTujok="
@@ -129,7 +128,6 @@ Each object in the `elements` array describes an element of the contract that Co
     },
     {
       "label": "Dispute Resolution",
-      "assurance": "High",
       "provenance": [
         {
           "id": "Ck8vgUWOj41OutOOLJ38b2Q7jOj3F30ABGaGLKKxppFA="
@@ -141,7 +139,6 @@ Each object in the `elements` array describes an element of the contract that Co
     },
     {
       "label": "Intellectual Property",
-      "assurance": "High",
       "provenance": [
         {
           "id": "Cor/mgcf1UE/zmsKm68M6+a9LSRCpcKe8EWCUdwsjrgs="
@@ -155,7 +152,6 @@ Each object in the `elements` array describes an element of the contract that Co
         "nature": "Obligation",
         "party": "All Parties"
       },
-      "assurance": "High",
       "provenance": [
         {
           "id": "NNpSqaNkY2zHtxI6Zh78NaZccVNtutrQxISkzdnaVjx0="

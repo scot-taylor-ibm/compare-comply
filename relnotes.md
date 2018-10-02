@@ -55,6 +55,7 @@ Beta release with the following features that have been introduced since the exp
   - The ability to parse scanned PDF files that have been processed by an optical character reader (OCR).
   - New `feedback` APIs to enable subject-matter experts to suggest feedback for future updates to the training model, as described at [Using the feedback APIs](/docs/services/compare-comply/feedback.html#feedback).
   - Improved table classification, as described at [Classifying tables](/docs/services/compare-comply/tables.html#understanding_tables).
+  - Tooling for working visually on documents, as described at [Using the Compare and Comply Tooling](/docs/services/compare-comply/tooling.html#using_tool).
 
 
 ## Known issues

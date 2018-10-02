@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018
-lastupdated: "2018-08-29"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-08-29"
 # Understanding the output schema
 {: #output_schema}
 
-After a document has been parsed and enriched by the `/v1/element_classification` method, the service provides JSON output in the following schema.
+After a document has been processed by the `/v1/element_classification` method, the service provides JSON output in the following schema.
 
 ```
 {
@@ -35,7 +35,6 @@ After a document has been parsed and enriched by the `/v1/element_classification
           "types": [
               {
                 "label": { "nature": string, "party": string },
-                "assurance": "High" or "Low",
                 "provenance": [
                     {
                       "id": string
@@ -48,7 +47,6 @@ After a document has been parsed and enriched by the `/v1/element_classification
           "categories": [
               {
                 "label": string,
-                "assurance": "High" or "Low",
                 "provenance": [
                    {
                      "id": string
@@ -67,10 +65,38 @@ After a document has been parsed and enriched by the `/v1/element_classification
         }
         ...
     ],
+    "effective_dates": [
+      {
+        "text": string,
+        "location": {"begin": int, "end": int}
+      },
+      ...
+    ],
+    "contract_amounts": [
+      {
+        "text": string,
+        "location": {"begin": int, "end": int}
+      },
+      ...
+    ],
     "parties": [
       {
         "party": string,
-        "role": string
+        "role": string,
+        "addresses": [
+          {
+            "text": string,
+            "location": {"begin": int, "end": int}
+          },
+          ...
+        ],
+        "contacts": [
+          {
+            "name": string,
+            "role": string
+          },
+          ...
+        ]
       },
       ...
     ],
@@ -210,12 +236,10 @@ The schema is arranged as follows.
       - `label`: An array of `nature` and `party` elements.
         - `nature`: The type of action the sentence requires. Possible values are `Definition`, `Disclaimer`, `Exclusion`, `Obligation`, and `Right`.
         - `party`: A string identifying the party to whom the sentence applies.
-      - `assurance`: The confidence that the detected type is applicable. Possible values are `High` and `Low`.
       - `provenance`: Each object in the `types` and `categories` arrays includes a `provenance` object. The object has one or more `id` keys.
         - `id`: A hashed value that you can send to IBM to provide feedback or receive support.
     - `categories`: An array that lists the functional categories into which the sentence falls; in other words, the subject matter of the sentence.
       - `label`: The category into which the sentence falls. See [Categories at Understanding contract parsing](/docs/services/compare-comply/parsing.html#contract_categories) for a list of categories.
-      - `assurance`: The confidence that the detected category is applicable. Possible values are `High` and `Low`.
       - `provenance`: Each object in the `types` and `categories` arrays includes a `provenance` object that includes one or more `id` keys.
         - `id`: A hashed value that you can send to IBM to provide feedback or receive support.
     - `attributes`: An array of `type`, `text`, and `attribute` elements.
@@ -223,9 +247,22 @@ The schema is arranged as follows.
       - `text`: The text that is associated with the attribute.
       - `attribute`: The location of the attribute as defined by its `begin` and `end` indexes.
 
-  - `parties`: An array defining the parties identified by the service.
-    - `party`: A string value identifying the party.
-    - `role`: A string value identifying the role of the party.
+ - `effective_dates`: An array identifying the effective dates of the document.
+   - `text`: The effective dates, listed as a string.
+   - `location`: The location of the date or dates as defined by its `begin` and `end` indexes.
+ - `contract_amounts`: An array identifying the monetary amounts identified in the document.
+   - `text`: The contract amounts, listed as a string.
+   - `location`: The location of the amount or amounts as defined by its `begin` and `end` indexes.
+
+ - `parties`: An array defining the parties identified by the service.
+   - `party`: A string value identifying the party.
+   - `role`: A string value identifying the role of the party.
+     - `addresses`: An array of objects that identify addresses.
+        - `text`: A string containing the address.
+        - `location`: The location of the address as defined by its `begin` and `end` indexes.
+     - `contacts`: An array defining the name and role of contacts identified in the input document.
+        - `name`: A string listing the name of an identified contact.
+        - `role`: A string listing the role of the identified contact.
     
  - `document_structure`: A JSON object describing the structure of the input document.
     - `sections`: A JSON array containing one object per section or subsection detected in the input document. Sections and subsections are not nested; instead, they are flattened out and can be placed back in order by using the `begin` and `end` values of the element and the `level` value of the section. Each object in the `sections` array includes a list of zero or more `sentences` that are directly under the title of the detected section.
