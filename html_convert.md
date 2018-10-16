@@ -35,7 +35,7 @@ Replace `{apikey_value}` with the API key you copied earlier and `{PDF_file}` wi
 
 ```bash
 curl -X POST -u "apikey":"{apikey_value}" -H 'Content-Type: application/json'
--F 'file=@{PDF_file};type=application/pdf' https://gateway.watsonplatform.net/compare-comply/api/v1/html_conversion?version=2018-08-24
+-F 'file=@{PDF_file};type=application/pdf' https://gateway.watsonplatform.net/compare-comply/api/v1/tables?version=2018-10-15
 ```
 {: pre}
 

@@ -88,7 +88,7 @@ The `categories` array defines the the subject matter of the sentence. Currently
 ## Attributes
 {: #attributes}
 
-The `attributes` array specifies any attributes identified in the sentence. Each object in the array includes three keys: `type` (the type of attribute from the following table), `text` (the applicable text), and `attribute` (the start and end points of the attribute in the document). Currently supported attributes include:
+The `attributes` array specifies any attributes identified in the sentence. Each object in the array includes three keys: `type` (the type of attribute from the following table), `text` (the applicable text), and `location` (the `begin` and `end` indexes of the attribute in the input document). Currently supported attributes include:
 
 | `attributes`     |Description                                                |
 |:----------------:|-----------------------------------------------------------|
@@ -99,5 +99,5 @@ The `attributes` array specifies any attributes identified in the sentence. Each
 ## Provenance
 {: #provenance}
 
-Each object in the `types` and `categories` arrays includes a `provenance` object. The `provenance` object has one or more `id` keys. Each `id` key has a hashed value that you can send to IBM to provide feedback or receive support.
+Each object in the `types` and `categories` arrays includes a `provenance_ids` array. The `provenance_ids` array has one or more keys. Each key is a hashed value that you can send to IBM to provide feedback or receive support.
 
