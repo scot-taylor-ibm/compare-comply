@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-15"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -64,14 +64,13 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/el
 Replace `{apikey_value}` with the API key you copied earlier and `{PDF_file}` with the path to the PDF to parse.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -F 'file=@{PDF_file};type=application/pdf' https://gateway.watsonplatform.net/compare-comply/api/v1/element_classification?version=2018-10-15
+curl -X POST -u "apikey":"{apikey_value}" -F "file=@{PDF_file};type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/element_classification?version=2018-10-15
 ```
 {: pre}
 
 The method returns a JSON object that contains:
 
-  - A `hash` string that lists the MD5 hash of the input document.
-  - [A `documents` object](#documents) that includes the input document's title and an HTML version of the input document.
+  - [A `documents` object](#documents) that includes the input document's title,  an HTML version of the input document, and the MD5 hash of the input document.
   - Information about the model used to classify the input document.  
   - [An `elements` array](#elements) that details semantic elements identified in the input document.
   - [A `tables` array](#tables) that breaks down the tables identified in the input document.

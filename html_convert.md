@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-02"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -34,8 +34,8 @@ You can specify the response content type to return the converted HTML in either
 Replace `{apikey_value}` with the API key you copied earlier and `{PDF_file}` with the path to the PDF to convert.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H 'Content-Type: application/json'
--F 'file=@{PDF_file};type=application/pdf' https://gateway.watsonplatform.net/compare-comply/api/v1/tables?version=2018-10-15
+curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: application/json"
+-F "file=@{PDF_file};type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/tables?version=2018-10-15
 ```
 {: pre}
 
@@ -52,7 +52,7 @@ In this example, the response content type `application/json` returns output in 
 ```
 {: screen}
 
-If you specify `-H 'Accept: text/html'`, the service returns only the contents of the `"html"` field from the previous output example:
+If you specify `-H "Accept: text/html"`, the service returns only the contents of the `"html"` field from the previous output example:
 
 ```
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?><html>...</html>
