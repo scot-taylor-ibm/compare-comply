@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-11"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -29,11 +29,11 @@ Users, preferably subject-matter experts (SMEs), can use the IBM Watson Compare 
 
 The feedback API endpoints are as follows.
 
- - `POST /v1/feedback`: Creates or adds feedback to the document.
- - `GET /v1/feedback`: Gets all feedback from the document.
- - `GET /v1/feedback/{feedback_id}`: Gets specified feedback from the document.
+ - `POST /v1/feedback`: Creates or adds feedback to a document.
+ - `GET /v1/feedback`: Gets all feedback from a document.
+ - `GET /v1/feedback/{feedback_id}`: Gets specified feedback from a document.
 <!-- `DELETE /v1/feedback`: Deletes all feedback from the document. -->
- - `DELETE /v1/feedback/{feedback_id}`: Deletes specified feedback from the document.
+ - `DELETE /v1/feedback/{feedback_id}`: Deletes specified feedback from a document.
  
 ## Warnings
 {: #feedback_warnings}
@@ -547,9 +547,11 @@ The output of the command is a JSON array resembling the following.
     }
   ],
   "pagination" : {
-      "previous_cursor" : string,
+      "refresh_cursor" : string,
       "next_cursor" : string,
-      "next_url" : string
+      "refresh_url" : string,
+      "next_url": string,
+      "total": integer
   }
 }
 ```
