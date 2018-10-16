@@ -3,7 +3,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-30"
+lastupdated: "2018-10-09"
 
 ---
 
@@ -39,12 +39,23 @@ API requests require a version parameter that takes a date in the format `versio
 
 Send the version parameter with every API request. The service uses the API version for the date you specify, or the most recent version before that date. Do not default to the current date. Instead, specify a date that matches a version that is compatible with your application, and do not change it until your application is ready for a later version.
 
-The current version is `2018-08-24`.
+The current version is `2018-10-15`.
 
 ## Changes
 {: #changes}
 
 The following new features and changes to the service are available.
+
+### 15 October 2018
+
+**Important:** Changes to the service's API and output schema are ongoing throughout the course of the beta. The API and output schema will be stabilized when the service becomes generally available (GA). When writing applications that access the service, be aware that the API calls and output can change in a future release; applications that access the service therefore need not to be used in a production environment. The following list summarizes the major API and schema changes in the current release.
+
+  - A new API version date (`2018-10-15`). If you specify an API version date earlier than `2018-10-15`, you call an older API that most likely has different method names and parameters than those documented for the current release.
+  - Changes to the output schema for the `/v1/element_classification` method. See [Getting started](/docs/services/compare-comply/getting-started.html#getting_started) and [Understanding the output schema](/docs/services/compare-comply/schema.html#output_schema) for details.
+  - The `/v1/comparison` method has been renamed `/v1/compare`, and several of its parameters have changed. See [](/docs/services/compare-comply/compare.html#compare) for details.
+  - Changes to the `/v1/tables` method's output schema. See [Understanding the output schema](/docs/services/compare-comply/schema.html#output_schema) and [Classifying tables](/docs/services/compare-comply/tables.html#understanding_tables) for information about the table parsing format.
+  - Changes to the input and output parameters in the `/v1/feedback` and `/v1/feedback/{feedback_id}` methods. See [Using the feedback APIs](/docs/services/compare-comply/feedback.html#feedback).
+
 
 ### 30 August 2018
 
