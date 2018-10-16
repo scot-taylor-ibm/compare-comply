@@ -202,8 +202,8 @@ After a document has been processed by the `/v1/element_classification` method, 
       ],
       "contacts": [
         {
-          "name": String
-          "role": String 
+          "name": string,
+          "role": string 
         },
         ...
       ]
@@ -212,28 +212,14 @@ After a document has been processed by the `/v1/element_classification` method, 
   ],
   "effective_dates": [
     {
-      "text" :string,
+      "text": string,
       "location": { "begin": int, "end": int }
      },
      ...
   ],
   "contract_amounts": [
     {
-      "text" :string,
-      "location": { "begin": int, "end": int }
-    },
-    ...
-  ],
-  "contract_currencies": [
-    {
-      "text" :string,
-      "location": { "begin": int, "end": int }
-    },
-    ...
-  ],
-  "termination_dates": [
-    {
-      "text" :string,
+      "text": string,
       "location": { "begin": int, "end": int }
     },
     ...
@@ -323,24 +309,18 @@ The schema is arranged as follows.
   - `parties`: An array defining the parties identified by the service.
     - `party`: A string value identifying the party.
     - `role`: A string value identifying the role of the party.
-      - `addresses`: An array of objects that identify addresses.
-        - `text`: A string containing the address.
-        - `location`: The location of the address as defined by its `begin` and `end` indexes.
-      - `contacts`: An array defining the name and role of contacts identified in the input document.
-        - `name`: A string listing the name of an identified contact.
-        - `role`: A string listing the role of the identified contact.  
+    - `addresses`: An array of objects that identify addresses.
+      - `text`: A string containing the address.
+      - `location`: The location of the address as defined by its `begin` and `end` indexes.
+    - `contacts`: An array defining the name and role of contacts identified in the input document.
+      - `name`: A string listing the name of an identified contact.
+      - `role`: A string listing the role of the identified contact.  
   - `effective_dates`: An array identifying the effective dates of the document.
     - `text`: The effective dates, listed as a string.
     - `location`: The location of the date or dates as defined by its `begin` and `end` indexes.
   - `contract_amounts`: An array identifying the monetary amounts identified in the document.
     - `text`: The contract amounts, listed as a string.
     - `location`: The location of the amount or amounts as defined by its `begin` and `end` indexes.
-  - `contract_currencies`: 
-    - `text`: The monetary currency or currencies, listed as a string.
-    - `location`: The location of the currency or currencies as defined by its `begin` and `end` indexes.
-  - `termination_dates`:
-    - `text`: The termination date or dates of the input document, listed as a string.
-    - `location`: The location of the date or dates as defined by its `begin` and `end` indexes.
 
 **\*Notes on tables:**
   - Row and column index values per cell are zero-based and so begin with `0`.
