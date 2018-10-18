@@ -47,7 +47,7 @@ Identify appropriate documents to analyze. Compare and Comply has been designed 
 
   **Note:** You can identify a PDF that is in text by opening the document in a PDF viewer and using the **Text select** tool to select a single word. If you cannot select a single word in the document, the file cannot be parsed.
 
-- Files are no larger than 50Mb in size.
+- The maximum size of a PDF file that can be uploaded through an individual method or the Tooling is 1.5 MB. If you use the [`/v1/batches` interface](/docs/services/compare-comply/batching.html#batching), you can upload documents up to 50 MB in size.
 - Secure PDFs (with a password to open) and editing restricted PDFs (with a password to edit) cannot be parsed.
 
 ## Step 2: Classify a contract's elements
@@ -61,7 +61,7 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/el
 Replace `{apikey_value}` with the API key you copied earlier and `{PDF_file}` with the path to the PDF to parse.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -F 'file=@{PDF_file};type=application/pdf' https://gateway.watsonplatform.net/compare-comply/api/v1/element_classification?version=2018-08-24
+curl -X POST -u "apikey":"{apikey_value}" -F "file=@{PDF_file};type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/element_classification?version=2018-08-24
 ```
 {: pre}
 

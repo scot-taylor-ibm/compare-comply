@@ -3,7 +3,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-24"
+lastupdated: "2018-10-18"
 
 ---
 
@@ -63,6 +63,6 @@ Beta release with the following features that have been introduced since the exp
 ## Known issues
 {: #known_issues}
 
-- The maximum size of a PDF file that can be uploaded is 50 Mb.
+- The maximum size of a PDF file that can be uploaded through an individual method or the Tooling is 1.5 MB. If you use the [`/v1/batches` interface](/docs/services/compare-comply/batching.html#batching), you can upload documents up to 50 MB in size.
 - PDFs with security enabled cannot be parsed.
 - Documents with non-standard page layouts (such as 2 or 3 columns per page) do not parse correctly.
