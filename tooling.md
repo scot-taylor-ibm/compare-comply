@@ -43,11 +43,11 @@ You need the following before you can use the Compare and Comply Tooling:
 
 The Tooling launches and displays the landing page. Click **Upload a document**. The Tooling opens a file browser. Select a PDF file and click **Open**.
 
-**Important:** The maximum file size is 1.5 MB.
+**Note:** The maximum file size is 10 MB.
 
 ![Compare and Comply Tooling landing page](images/tool-landing.png)
 
-  You have the option to allow IBM Watson to use non-identifiable information from the document for general Watson service improvements. If you want to do this, select the **Allow Watson to use this document for learning** checkbox. The checkbox text includes a link to more information at [See more details ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/docs/services/watson/getting-started-logging.html#controlling-request-logging-for-watson-services){: new_window}. You can also see [https://www.ibm.com/watson/data-privacy/ ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/data-privacy/){:new_window} for information about IBM's commitment to data privacy.
+  You have the option to allow IBM Watson to use non-identifiable information from the document for general Watson service improvements. If you want to do this, select the **Allow Watson to use this document for learning** checkbox. The checkbox text includes a link to [See more details ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/docs/services/watson/getting-started-logging.html#controlling-request-logging-for-watson-services){: new_window}. You can also see [https://www.ibm.com/watson/data-privacy/ ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/data-privacy/) for information about IBM's commitment to data privacy{:new_window}.
   {: tip}
 
 ## Step 3: Filter elements by labels

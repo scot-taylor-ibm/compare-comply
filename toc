@@ -9,12 +9,12 @@ Compare and Comply: Beta
     getting-started.md
     parsing.md
     schema.md
-    doc_structure.md
+    tables.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
     compare.md
-    tables.md
+    doc_structure.md
     html_convert.md    
     feedback.md
     tooling.md
@@ -23,7 +23,7 @@ Compare and Comply: Beta
 
     {: .navgroup id="reference"}
     information-security.md
-    [API Docs](/apidocs/compare-comply)
+    [API reference](https://www.ibm.com/watson/developercloud/compare-comply/)
     
 
     {: .navgroup-end}
