@@ -7,14 +7,14 @@ Compare and Comply: Beta
     {: .navgroup id="learn"}
     index.md
     getting-started.md
-    schema.md
     parsing.md
-    doc_structure.md
+    schema.md
+    tables.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
     compare.md
-    tables.md
+    doc_structure.md
     html_convert.md    
     feedback.md
     tooling.md
@@ -23,7 +23,7 @@ Compare and Comply: Beta
 
     {: .navgroup id="reference"}
     information-security.md
-    [API Docs](https://console.bluemix.net/apidocs/compare-comply)
+    [API reference](https://www.ibm.com/watson/developercloud/compare-comply/)
     
 
     {: .navgroup-end}
