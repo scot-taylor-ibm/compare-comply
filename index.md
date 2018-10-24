@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-24"
+lastupdated: "2018-10-11"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-08-24"
 # About
 {: #about}
 
-IBM Watson&reg; Compare and Comply makes it possible to rapidly parse through governing documents to convert, identify, and classify important elements. Using state-of-the-art Natural Language Processing, the service extracts elements including `party` (to whom the document refers), `nature` (type of element), and `category` (specific element class).
+IBM Watson&trade; Compare and Comply makes it possible to rapidly parse through governing documents to convert, identify, and classify important elements. Using state-of-the-art Natural Language Processing, the service extracts elements including `party` (to whom the document refers), `nature` (type of element), and `category` (specific element class).
 
 Compare and Comply is designed to provide:
 
