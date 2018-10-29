@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-24"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -43,12 +43,9 @@ In this short tutorial, we introduce IBM Watson&reg; Compare and Comply and go t
 Identify appropriate documents to analyze. Compare and Comply has been designed to analyze contractual <!-- and regulatory -->documents that meet the following criteria:
 
 - Files to be analyzed are in PDF format.
-- The PDF contents are in text form. Documents that have been scanned cannot be parsed, even if the scans have been processed by an optical character reader (OCR).
-
-  **Note:** You can identify a PDF that is in text by opening the document in a PDF viewer and using the **Text select** tool to select a single word. If you cannot select a single word in the document, the file cannot be parsed.
-
-- Files are no larger than 50Mb in size.
-- Secure PDFs (with a password to open) and editing restricted PDFs (with a password to edit) cannot be parsed.
+- Both programmatic and scanned PDF files are supported. Files that have been scanned and processed by an optical character reader (OCR) are also supported.
+- Files can be up to 1.5 MB in size when submitted to the service by using individual methods. If you submit files through the [`/v1/batches` interface](/docs/services/compare-comply/batching.html#batching), files can be up to 50 MB in size.
+- Secure PDFs (with a password to open) and restricted PDFs (with a password to edit) cannot be processed.
 
 ## Step 2: Classify a contract's elements
 {: #parse_contract}

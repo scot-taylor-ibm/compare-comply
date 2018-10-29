@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-24"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -86,9 +86,9 @@ In a `bash` shell or equivalent environment such as Cygwin, issue the following 
       "model_id": string # optional, identifies the element model
       "model_version": string # optional, identifies the model version
       "element": { # required, identifies the element within a document
-        "begin": integer, # required, the span begin of the sentence in the document
-        "end": integer, # required, the span end of the sentence in the document
-        "text": string, # optional, the text of the sentence
+        "begin": integer, # required, the span begin of the element in the document
+        "end": integer, # required, the span end of the element in the document
+        "text": string, # optional, the text of the element
       },
       "comment": string # optional, free form comment or further description of this feedback
       "original_labels": { # required, empty node is allowed
