@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-24"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-08-24"
 # Understanding contract parsing
 {: #contract_parsing}
 
-Compare and Comply returns parsed contracts with an analysis of each identified element.
+When you upload a contract to Compare and Comply by specifying the `model_id` value `contracts` on the `/v1/element_classification` method, the service returns the contract with an analysis of each identified element.
 
 The following sections describe how the returned JSON provides the analysis.
 
