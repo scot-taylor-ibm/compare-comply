@@ -20,7 +20,7 @@ lastupdated: "2018-10-29"
 # Converting an input document into HTML
 {: #html_conversion}
 
-You can classify the contents of tables in your input document by using the `POST /v1/html_conversion` method. 
+You can transform a PDF input document into HTML by using the `POST /v1/html_conversion` method. 
 
 In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/html_conversion` method to convert a PDF input document into HTML. The method takes the following input parameters:
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
@@ -28,18 +28,18 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/ht
   - `model` (optional `string`): If this parameter is specified, the service runs the specified type of element classification. Currently, the only supported value is `contracts`.
   
 You can specify the response content type to return the converted HTML in either JSON (the default) or raw HTML. See the examples following the command example for the different formats.
-  - To return JSON explicitly, specify the header `-H 'Accept: application/json'`. This is the default.
-  - To return raw HTML, specify the header `-H 'Accept: text/html'`.
+  - To return JSON explicitly, specify the header `-H "Accept: application/json"`. This is the default.
+  - To return raw HTML, specify the header `-H "Accept: text/html"`.
   
 Replace `{apikey_value}` with the API key you copied earlier and `{PDF_file}` with the path to the PDF to convert.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H 'Accept: application/json'
--F 'file=@{PDF_file};type=application/pdf' https://gateway.watsonplatform.net/compare-comply/api/v1/html_conversion?version=2018-08-24
+curl -X POST -u "apikey":"{apikey_value}" -H "Accept: application/json"
+-F "file=@{PDF_file};type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/html_conversion?version=2018-10-15
 ```
 {: pre}
 
-In this example, the response content type `application/json` returns output in the following format:
+In this example, the header `-H "Accept: application/json"` returns output in the following format:
 
 ```
 {
@@ -52,9 +52,9 @@ In this example, the response content type `application/json` returns output in 
 ```
 {: screen}
 
-If you specify `-H 'Content-Type: text/html'`, the service returns only the contents of the `"html"` field from the previous output example:
+If you specify `-H "Accept: text/html"`, the service returns only the contents of the `"html"` field from the previous output example:
 
 ```
-<?xml version='1.0' encoding='UTF-8' standalone='yes'?><html>...
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?><html>...</html>
 ```
 {: screen}

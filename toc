@@ -1,20 +1,20 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="compare-comply" audience="service" href="/docs/services/compare-comply/index.html"}
+{: .toc subcollection="compare-comply" audience="service" href="/docs/services/compare-comply/index.html" path="services/compare-comply"}
 Compare and Comply: Beta
 
     {: .navgroup id="learn"}
     index.md
     getting-started.md
-    parsing.md
     schema.md
-    tables.md
+    parsing.md
+    doc_structure.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
     compare.md
-    doc_structure.md
+    tables.md
     html_convert.md    
     feedback.md
     tooling.md
@@ -23,7 +23,8 @@ Compare and Comply: Beta
 
     {: .navgroup id="reference"}
     information-security.md
-    [API reference](https://www.ibm.com/watson/developercloud/compare-comply/)
+    at-events.md
+    [API Docs](https://console.bluemix.net/apidocs/compare-comply)
     
 
     {: .navgroup-end}
