@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-10-31"
 
 ---
 
@@ -74,7 +74,7 @@ The method returns a JSON object that contains:
   - [A `tables` array](#tables) that breaks down the tables identified in the input document.
   - [A `document_structure` object](#doc_struct) that lists section titles and leading sentences identified in the input document.
   - [A `parties` array](#parties) that lists the parties, roles, addresses, and contacts of parties identified in the input document.
-  - [Arrays defining `effective_dates` and `contract_amounts`.](#other_arrays)
+  - [Arrays defining `effective_dates`, `contract_amounts`, and `termination_dates`.](#other_arrays)
 
 ## Step 3: Review the analysis
 {: #review_analysis}
@@ -193,6 +193,7 @@ The following arrays provide useful information about the input document. Each o
 
   - The `effective_dates` array lists any effective dates identified in the input document.
   - The `contract_amounts` array lists monetary amounts specified by the input document.
+  - The `termination_dates` array lists the input document's termination dates.
 
 ## Next steps
 {: #next_steps}
