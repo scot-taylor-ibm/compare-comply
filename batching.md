@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-16"
+lastupdated: "2018-11-05"
 
 ---
 
@@ -11,6 +11,8 @@ lastupdated: "2018-10-16"
 {:tip: .tip}
 {:pre: .pre}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
 {:screen: .screen}
 {:javascript: .ph data-hd-programlang='javascript'}
 {:java: .ph data-hd-programlang='java'}
@@ -24,9 +26,11 @@ The `/v1/batches` APIs enable you to run Compare and Comply methods over a colle
 
 All batch requests return a batch status object that include a `batch_id`. The `batch_id` can be used to monitor the status of a request and to cancel a request.
 
-**Important:** Batch-processing requests require access credentials for a Cloud Object Storage (COS) instance and the name of an input and output bucket in that instance. Details are provided in [Before you begin](/docs/services/compare-comply/batching.html#before-you-batch).
+Batch-processing requests require access credentials for a Cloud Object Storage (COS) instance and the name of an input and output bucket in that instance. Details are provided in [Before you begin](/docs/services/compare-comply/batching.html#before-you-batch).
+{: important}
 
-**Note:** Files submitted through the `/v1/batches` APIs can be up to 50 MB in size.
+Files submitted through the `/v1/batches` APIs can be up to 50 MB in size.
+{: note}
 
 ## API endpoints
 {: #batching_endpoints}
@@ -67,7 +71,7 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/ba
   
 ```bash
 curl -X POST -u "apikey":"{apikey_value}" \ 
-https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10-15&function=classify \
+https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10-15&function=element_classification \
   -F input_credentials_file=@{path/to/input_credentials_file} \
   -F input_bucket_location={geography} \
   -F input_bucket_name={input_bucket_name} \
@@ -77,7 +81,8 @@ https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10
   ```
 {: codeblock}
   
-**Note:** The values of the `input_credentials_file` and `output_credentials_file` are files that contain the COS service credentials as a JSON object. You can obtain the JSON from the COS web console page on the **Service credentials** tab. The JSON resembles the following:
+The values of the `input_credentials_file` and `output_credentials_file` are files that contain the COS service credentials as a JSON object. You can obtain the JSON from the COS web console page on the **Service credentials** tab. The JSON resembles the following:
+{: note}
 
 ```
 {
@@ -219,7 +224,7 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `GET /v1/bat
 
 ```bash
 curl -X GET -u "apikey":"{apikey_value}" \ 
-https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10-15&id=0a7f8ab8-97a0-4b67-9fea-feacafbb0b20
+https://gateway.watsonplatform.net/compare-comply/api/v1/batches/0a7f8ab8-97a0-4b67-9fea-feacafbb0b20?version=2018-10-15
 ```
 {: codeblock}
 
@@ -257,7 +262,7 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `PUT /v1/bat
 
 ```bash
 curl -X PUT -u "apikey":"{apikey_value}" \ 
-https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10-15&id=0a7f8ab8-97a0-4b67-9fea-feacafbb0b20&operation=rescan
+https://gateway.watsonplatform.net/compare-comply/api/v1/batches/0a7f8ab8-97a0-4b67-9fea-feacafbb0b20?version=2018-10-15&action=rescan
 ```
 {: codeblock}
 
@@ -295,7 +300,7 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `PUT /v1/bat
 
 ```bash
 curl -X PUT -u "apikey":"{apikey_value}" \ 
-https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10-15&id=0a7f8ab8-97a0-4b67-9fea-feacafbb0b20&operation=cancel
+https://gateway.watsonplatform.net/compare-comply/api/v1/batches/0a7f8ab8-97a0-4b67-9fea-feacafbb0b20?version=2018-10-15&action=cancel
 ```
 {: codeblock}
 

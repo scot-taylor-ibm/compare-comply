@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-10-31"
 
 ---
 
@@ -12,6 +12,8 @@ lastupdated: "2018-10-29"
 {:pre: .pre}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
 {:javascript: .ph data-hd-programlang='javascript'}
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
@@ -74,7 +76,7 @@ The method returns a JSON object that contains:
   - [A `tables` array](#tables) that breaks down the tables identified in the input document.
   - [A `document_structure` object](#doc_struct) that lists section titles and leading sentences identified in the input document.
   - [A `parties` array](#parties) that lists the parties, roles, addresses, and contacts of parties identified in the input document.
-  - [Arrays defining `effective_dates` and `contract_amounts`.](#other_arrays)
+  - [Arrays defining `effective_dates`, `contract_amounts`, and `termination_dates`.](#other_arrays)
 
 ## Step 3: Review the analysis
 {: #review_analysis}
@@ -132,11 +134,14 @@ Each element has five important sections:
   
 Additionally, each object in the `types` and `categories` arrays includes a `provenance_ids` array. The values listed in the `provenance_ids` array are hashed values that you can send to IBM to provide feedback or receive support about the part of the analysis associated with the element.
 
-**Note**: Some sentences do not fall under any type or category, in which case the service returns the `types` and `categories` arrays as empty objects.
+Some sentences do not fall under any type or category, in which case the service returns the `types` and `categories` arrays as empty objects.
+{: note}
 
-**Note:** Some sentences cover multiple topics, in which case the service returns multiple sets of `types` and `categories` objects.
+Some sentences cover multiple topics, in which case the service returns multiple sets of `types` and `categories` objects.
+{: note}
 
-**Note**: Some sentences do not contain any identifiable attributes, in which case the service returns the `attributes` array as empty objects.
+Some sentences do not contain any identifiable attributes, in which case the service returns the `attributes` array as empty objects.
+{: note}
 
 ### Tables
 {: tables}
@@ -193,6 +198,7 @@ The following arrays provide useful information about the input document. Each o
 
   - The `effective_dates` array lists any effective dates identified in the input document.
   - The `contract_amounts` array lists monetary amounts specified by the input document.
+  - The `termination_dates` array lists the input document's termination dates.
 
 ## Next steps
 {: #next_steps}

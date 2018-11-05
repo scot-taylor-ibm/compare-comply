@@ -11,6 +11,8 @@ lastupdated: "2018-10-11"
 {:tip: .tip}
 {:pre: .pre}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
 {:screen: .screen}
 {:javascript: .ph data-hd-programlang='javascript'}
 {:java: .ph data-hd-programlang='java'}
@@ -33,7 +35,8 @@ Compare and Comply brings together a functionally rich set of integrated, automa
 ## Beta features
 {: #beta_features}
 
-**Important:** Compare and Comply is a beta service.
+Compare and Comply is a beta service.
+{: important}
 
 IBM will release services, features, and language support that are classified as beta or experimental. These capacities can be unstable, can change frequently, and can be discontinued with short notice. They are provided so you can evaluate their functionality. A beta or experimental capacity might not provide the same level of performance or compatibility that generally released capacities provide. These capacities are not designed for use in a production environment, and any such use is at your own risk.
 

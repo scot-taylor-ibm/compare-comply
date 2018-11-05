@@ -11,6 +11,8 @@ lastupdated: "2018-10-29"
 {:tip: .tip}
 {:pre: .pre}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
 {:screen: .screen}
 {:javascript: .ph data-hd-programlang='javascript'}
 {:java: .ph data-hd-programlang='java'}
@@ -22,7 +24,8 @@ lastupdated: "2018-10-29"
 
 Users, preferably subject-matter experts (SMEs), can use the IBM Watson Compare and Comply service's feedback APIs to provide feedback on a parsed document. You can provide feedback on any element that has been labeled by the service. The feedback is associated with the document for future review and consideration. The feedback APIs enable users to submit, get, and delete feedback.
 
-**Important:** Feedback is not immediately incorporated into the training model, nor is it guaranteed to be incorporated at a later date. Instead, submitted feedback is used to suggest future updates to the training model.
+Feedback is not immediately incorporated into the training model, nor is it guaranteed to be incorporated at a later date. Instead, submitted feedback is used to suggest future updates to the training model.
+{: important}
 
 ## API endpoints
 {: #feedback_endpoints}
@@ -46,7 +49,7 @@ Observe the following warnings and precautions when working with the feedback AP
   - You cannot change posted feedback. You can, however, delete it and replace it by reposting.
   - The unauthorized use of a `GET` method on a confidential document can potentially result in information being exposed to unauthorized users.
 
-## Steps
+## Workflow for using feedback
 {: #feedback_steps}
 
 In the following scenario, an SME named Stuart reviews a parsed governing document and provides feedback on it by using the feedback API. After Stuart finishes his review, an SME named Ann takes the document, reviews it and Stuart's feedback, and uses the feedback API to provide additional feedback. At a high level, the steps are:
@@ -63,7 +66,7 @@ These steps are described in more detail in the following sections.
   You can also provide feedback by using the Compare and Comply Tooling as described at [Adding feedback in Using the Compare and Comply Tooling](/docs/services/compare-comply/tooling.html#tool-add-feedback).
   {: tip}
 
-### Adding feedback
+## Adding feedback
 {: #add_feedback}
 
 You can add feedback to a document programmatically by using the `POST /v1/feedback` method. 
@@ -338,7 +341,7 @@ The command makes the following feedback:
   Because the previous items are present in both the `original_labels` and `updated_labels` objects, the service considers the type and category to be correct.
 
 
-### Getting all feedback
+## Getting all feedback
 {: #get_all_feedback}
 
 You can retrieval all feedback that has been added to a document by using the `GET /v1/feedback/` method. The method takes the following input parameters:
@@ -557,7 +560,7 @@ The output of the command is a JSON array resembling the following.
 ```
 {: screen}
 
-### Getting specific feedback
+## Getting specific feedback
 {: #get_spec_feedback}
 
 You can retrieve specific feedback from a document by using the `GET /v1/feedback/{feedback_id}` method. The method takes the following input parameters.
@@ -568,7 +571,7 @@ You can retrieve specific feedback from a document by using the `GET /v1/feedbac
 An example command is:
 
 ```bash
-curl -X GET -u "apikey":"{apikey_value}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15&feedback_id=9730b437-cb86-4d40-9a84-ff6948bb3dd1
+curl -X GET -u "apikey":"{apikey_value}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback/9730b437-cb86-4d40-9a84-ff6948bb3dd1?version=2018-10-15
 ```
 {: codeblock}
 
@@ -669,7 +672,7 @@ The service returns the following output on success:
 {: codeblock}
 -->
 
-### Deleting specific feedback
+## Deleting specific feedback
 {: #delete_spec_feedback}
 
 You can delete specific feedback from a document by using the `DELETE /v1/feedback/{feedback_id}` method. The method takes the following input parameters.
@@ -680,7 +683,7 @@ You can delete specific feedback from a document by using the `DELETE /v1/feedba
 An example command is:
   
 ```bash
-curl -X DELETE -u "apikey":"{apikey_value}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15&feedback_id=5206038a-5ea0-4f48-bee1-0780c56c53c9
+curl -X DELETE -u "apikey":"{apikey_value}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback/5206038a-5ea0-4f48-bee1-0780c56c53c9?version=2018-10-15
 ```
 {: codeblock}
 
