@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018
-lastupdated: "2018-10-04"
+lastupdated: "2018-11-05"
 
 ---
 
@@ -12,6 +12,8 @@ lastupdated: "2018-10-04"
 {:pre: .pre}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
 {:javascript: .ph data-hd-programlang='javascript'}
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
@@ -22,7 +24,7 @@ lastupdated: "2018-10-04"
 
 You can use the service to compare two documents. For example, you can compare a new, unsigned contract with a signed contract from the previous year. 
 
-The `POST /v1/compare` method enables you to compare two documents. Specifically, the method finds and reports semantically aligned elements from the documents. It also reports elements from each document that do not semantically align with any other element.
+The `POST /v1/comparison` method enables you to compare two documents. Specifically, the method finds and reports semantically aligned elements from the documents. It also reports elements from each document that do not semantically align with any other element.
 
 ## Step 1: Identify two comparable documents
 {: #step1}
@@ -36,18 +38,17 @@ In a `bash` shell or equivalent environment such as Cygwin, issue the following 
   - Replace `{apikey_value}` with the API key you copied in [Before you begin in Getting Started](/docs/services/compare-comply/getting-started.html#before-you-begin).
   - Replace `{file_1}` and `{file_2}` with the path to the PDF or JSON files you want to compare.
   - Optionally specify values for `file_1_label` and `file_2_label` to identify files 1 and 2, respectively. If you do not specify labels, the method uses the default label values `file_1` and `file_2`.
-  - Optionally specify the value `contracts` for the `model` parameter.
-    **Note:** The only model value accepted by the `POST /v1/compare` method is `contracts`.
+  - Optionally specify the value `contracts` for the `model` parameter. The only model value accepted by the `POST /v1/comparison` method is `contracts`.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file1=@/Users/Downloads/{file_1}.pdf" -F "file2=@/Users/Downloads/{file_2}.pdf" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/compare?version=2018-10-15&model=contracts
+curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file1=@/Users/Downloads/{file_1}.pdf" -F "file2=@/Users/Downloads/{file_2}.pdf" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15&model=contracts
 ```
 {: pre}
 
 If you are submitting JSON files instead of PDF files for comparison, specify the media type for the JSON files as follows:
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file_1=@/Users/Downloads/{file_1}.json;type=application/json" -F "file_2=@/Users/Downloads/{file_2}.json;type=application/json" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/compare?version=2018-10-15
+curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file_1=@/Users/Downloads/{file_1}.json;type=application/json" -F "file_2=@/Users/Downloads/{file_2}.json;type=application/json" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15
 ```
 {: pre}
 

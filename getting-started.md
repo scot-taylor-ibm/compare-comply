@@ -12,6 +12,8 @@ lastupdated: "2018-10-31"
 {:pre: .pre}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
 {:javascript: .ph data-hd-programlang='javascript'}
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
@@ -132,11 +134,14 @@ Each element has five important sections:
   
 Additionally, each object in the `types` and `categories` arrays includes a `provenance_ids` array. The values listed in the `provenance_ids` array are hashed values that you can send to IBM to provide feedback or receive support about the part of the analysis associated with the element.
 
-**Note**: Some sentences do not fall under any type or category, in which case the service returns the `types` and `categories` arrays as empty objects.
+Some sentences do not fall under any type or category, in which case the service returns the `types` and `categories` arrays as empty objects.
+{: note}
 
-**Note:** Some sentences cover multiple topics, in which case the service returns multiple sets of `types` and `categories` objects.
+Some sentences cover multiple topics, in which case the service returns multiple sets of `types` and `categories` objects.
+{: note}
 
-**Note**: Some sentences do not contain any identifiable attributes, in which case the service returns the `attributes` array as empty objects.
+Some sentences do not contain any identifiable attributes, in which case the service returns the `attributes` array as empty objects.
+{: note}
 
 ### Tables
 {: tables}

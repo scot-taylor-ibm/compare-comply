@@ -11,6 +11,8 @@ lastupdated: "2018-10-29"
 {:tip: .tip}
 {:pre: .pre}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
 {:screen: .screen}
 {:javascript: .ph data-hd-programlang='javascript'}
 {:java: .ph data-hd-programlang='java'}

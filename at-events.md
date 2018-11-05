@@ -11,6 +11,8 @@ lastupdated: "2018-10-30"
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
 {:tip: .tip}
 {:download: .download}
 {:table: .aria-labeledby="caption"}

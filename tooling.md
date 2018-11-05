@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018
-lastupdated: "2018-08-07"
+lastupdated: "2018-11-05"
 
 ---
 
@@ -12,6 +12,8 @@ lastupdated: "2018-08-07"
 {:pre: .pre}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
 {:javascript: .ph data-hd-programlang='javascript'}
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
@@ -43,7 +45,8 @@ You need the following before you can use the Compare and Comply Tooling:
 
 The Tooling launches and displays the landing page. Click **Upload a document**. The Tooling opens a file browser. Select a PDF file and click **Open**.
 
-**Important:** The maximum file size is 1.5 MB.
+The maximum file size is 1.5 MB.
+{: important}
 
 ![Compare and Comply Tooling landing page](images/tool-landing.png)
 
@@ -58,12 +61,16 @@ The Compare and Comply Tooling displays three panes. The top pane lists the name
 ![Compare and Comply Tooling with opened document](images/tooling-open-doc.png)
  
 1. In the left-hand pane, select one or more labels from the **Category** listings. When you select an item, the Tooling highlights the elements in that category. For example, selecting **Dispute Resolution** highlights all elements in the document that match that category.
-   **Note**: Category selections are logical `AND` operations. That is, if you select more than one category, the Tooling highlights only the elements that match all of the selections.
-   ![Compare and Comply Tooling with category selection](images/tooling-category.png)
+
+  Category selections are logical `AND` operations. That is, if you select more than one category, the Tooling highlights only the elements that match all of the selections.
+  {: note}
+  ![Compare and Comply Tooling with category selection](images/tooling-category.png)
  
 1. After selecting the category, you can select one or more active labels from the **Nature** listings, the **Party** listings, or both. As you make additional selections, the highlights change to match the combination of selected labels.
-   **Note**: Nature and party selections are logical `OR` operations. That is, if you select more than one nature or party, the Tooling highlights all elements that match any of the selections.
-   ![Compare and Comply Tooling with category and nature selections](images/tooling-cat-nature.png)
+
+  Nature and party selections are logical `OR` operations. That is, if you select more than one nature or party, the Tooling highlights all elements that match any of the selections.
+  {: note}
+  ![Compare and Comply Tooling with category and nature selections](images/tooling-cat-nature.png)
  
 1. Click a highlighted element to display all labels applied to the element. You can optionally provide _feedback_ to the labels and elements, as described in [Adding feedback](#tool-add-feedback).
    ![Compare and Comply Tooling displaying element-specific information](images/tool-highlight.png)
