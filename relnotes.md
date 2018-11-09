@@ -54,8 +54,6 @@ The following new features and changes to the service are available.
 
 Compare and Comply now has the ability to process certain image files and text files as listed at [Supported input formats](/docs/services/compare-comply/formats.html#formats).
 
-**Note:** The 
-
 The service can process "plain" text (ASCII) files that use a monospaced font and page breaks. Richer text formats that include non-monospaced fonts and style attributes such as bold and italics are not yet supported. If you need to process an enriched text file, convert it to PDF before submitting it to the service.
 
 Supported image formats currently include the following. Scanned image files must have a resolution of at least 300 DPI.
@@ -74,7 +72,7 @@ The service's methods can accept different types of files as specified in the fo
 |`/v1/html_conversion`| All supported image formats | Supported |
 |`/v1/element_classification`|  All supported image formats | **Not** supported|
 |`/v1/tables`      | All supported image formats | Supported |
-|`/v1/comparison`  | All supported image formats | **Not** supported*|
+|`/v1/comparison`*  | All supported image formats | **Not** supported|
 
 \* **Note:** The `/v1/comparison` method still accepts JSON files.
 
