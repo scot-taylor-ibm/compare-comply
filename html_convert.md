@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-09"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2018-10-29"
 # Converting an input document into HTML
 {: #html_conversion}
 
-You can transform a PDF input document into HTML by using the `POST /v1/html_conversion` method. 
+You can transform an [input document](/docs/services/compare-comply/formats.html#formats) into HTML by using the `POST /v1/html_conversion` method. 
 
 In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/html_conversion` method to convert a PDF input document into HTML. The method takes the following input parameters:
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
@@ -33,11 +33,11 @@ You can specify the response content type to return the converted HTML in either
   - To return JSON explicitly, specify the header `-H "Accept: application/json"`. This is the default.
   - To return raw HTML, specify the header `-H "Accept: text/html"`.
   
-Replace `{apikey_value}` with the API key you copied earlier and `{PDF_file}` with the path to the PDF to convert.
+Replace `{apikey_value}` with the API key you copied earlier and `{input_file}` with the path to the input file to convert.
 
 ```bash
 curl -X POST -u "apikey":"{apikey_value}" -H "Accept: application/json"
--F "file=@{PDF_file};type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/html_conversion?version=2018-10-15
+-F "file=@{input_file};type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/html_conversion?version=2018-10-15
 ```
 {: pre}
 

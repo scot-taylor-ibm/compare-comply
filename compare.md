@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018
-lastupdated: "2018-11-05"
+lastupdated: "2018-11-07"
 
 ---
 
@@ -23,13 +23,14 @@ lastupdated: "2018-11-05"
 {: #compare}
 
 You can use the service to compare two documents. For example, you can compare a new, unsigned contract with a signed contract from the previous year. 
+{: shortdesc}
 
 The `POST /v1/comparison` method enables you to compare two documents. Specifically, the method finds and reports semantically aligned elements from the documents. It also reports elements from each document that do not semantically align with any other element.
 
 ## Step 1: Identify two comparable documents
 {: #step1}
 
-Identify two documents to compare. See [Step 1 in Getting started](/docs/services/compare-comply/getting-started.html) for information on document requirements. For best results, choose two documents that are related to each other; for example, an original contract and a revised version of the same contract.
+Identify two documents to compare. See [Step 1 in Getting started](/docs/services/compare-comply/getting-started.html) and [Supported input formats](/docs/services/compare-comply/formats.html#formats) for information on document requirements. For best results, choose two documents that are related to each other; for example, an original contract and a revised version of the same contract.
 
 ## Step 2: Compare two documents
 {: #step2}
@@ -41,11 +42,11 @@ In a `bash` shell or equivalent environment such as Cygwin, issue the following 
   - Optionally specify the value `contracts` for the `model` parameter. The only model value accepted by the `POST /v1/comparison` method is `contracts`.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file1=@/Users/Downloads/{file_1}.pdf" -F "file2=@/Users/Downloads/{file_2}.pdf" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15&model=contracts
+curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file1=@/Users/Downloads/{file_1}" -F "file2=@/Users/Downloads/{file_2}" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15&model=contracts
 ```
 {: pre}
 
-If you are submitting JSON files instead of PDF files for comparison, specify the media type for the JSON files as follows:
+If you are submitting JSON files for comparison, specify the media type for the JSON files as follows:
 
 ```bash
 curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file_1=@/Users/Downloads/{file_1}.json;type=application/json" -F "file_2=@/Users/Downloads/{file_2}.json;type=application/json" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15

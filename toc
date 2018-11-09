@@ -10,6 +10,7 @@ Compare and Comply: Beta
     schema.md
     parsing.md
     doc_structure.md
+    formats.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}

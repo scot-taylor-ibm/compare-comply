@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018
-lastupdated: "2018-10-09"
+lastupdated: "2018-11-07"
 
 ---
 
@@ -22,17 +22,17 @@ lastupdated: "2018-10-09"
 # Classifying tables
 {: #understanding_tables}
 
-You can classify the contents of tables in your input document by using the `POST /v1/tables` method. 
+You can classify the contents of tables in your [input document](/docs/services/compare-comply/formats.html#formats) by using the `POST /v1/tables` method. 
 
 In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/tables` method to classify the contents of tables in your document. The method takes the following input parameters:
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
   - `file` (**required** `file`): The input file that is to be classified.
   - `model` (optional `string`): If this parameter is specified, the service runs the specified type of element classification. Currently, the only supported value is `contracts`.
   
-Replace `{apikey_value}` with the API key you copied earlier and `{PDF_file}` with the path to the PDF to parse.
+Replace `{apikey_value}` with the API key you copied earlier and `{input_file}` with the path to the input file to parse.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -F 'file=@{PDF_file};type=application/pdf' https://gateway.watsonplatform.net/compare-comply/api/v1/tables?version=2018-10-15
+curl -X POST -u "apikey":"{apikey_value}" -F 'file=@{input_file}' https://gateway.watsonplatform.net/compare-comply/api/v1/tables?version=2018-10-15
 ```
 {: pre}
 
