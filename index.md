@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-11"
+lastupdated: "2018-11-07"
 
 ---
 
@@ -27,15 +27,15 @@ IBM Watson&trade; Compare and Comply makes it possible to rapidly parse through 
 Compare and Comply is designed to provide:
 
  - Natural language understanding of contracts and regulatory documents
- - The ability to convert programmatic PDF to annotated JSON
+ - The ability to convert programmatic or scanned PDF documents, image files, and text files to annotated JSON
  - Identification of legal entities and categories that align with subject matter expertise
 
-Compare and Comply brings together a functionally rich set of integrated, automated Watson APIs to input a programmatic PDF to identify sections, lists (numbered and bulleted), footnotes, and tables, converting these items into a structured HTML format. Furthermore, classification of this structured format is annotated and output as JSON with labeled elements, types, and categories.
+Compare and Comply brings together a functionally rich set of integrated, automated Watson APIs to input a document, an image file, or a text file to identify sections, lists (numbered and bulleted), footnotes, and tables, converting these items into a structured HTML format. Furthermore, classification of this structured format is annotated and output as JSON with labeled elements, types,  categories, and other information.
 
 ## Beta features
 {: #beta_features}
 
-Compare and Comply is a beta service.
+**Important**: Compare and Comply is a beta service.
 {: important}
 
 IBM will release services, features, and language support that are classified as beta or experimental. These capacities can be unstable, can change frequently, and can be discontinued with short notice. They are provided so you can evaluate their functionality. A beta or experimental capacity might not provide the same level of performance or compatibility that generally released capacities provide. These capacities are not designed for use in a production environment, and any such use is at your own risk.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-31"
+lastupdated: "2018-11-07"
 
 ---
 
@@ -42,10 +42,9 @@ In this short tutorial, we introduce IBM Watson&reg; Compare and Comply and go t
 ## Step 1: Identify content
 {: #identify_content}
 
-Identify appropriate documents to analyze. Compare and Comply has been designed to analyze contractual <!-- and regulatory -->documents that meet the following criteria:
+Identify appropriate documents to analyze. Compare and Comply can analyze contractual <!-- and regulatory -->documents that meet the criteria listed in [Supported input formats](/docs/services/compare-comply/formats.html#formats).
 
-- Files to be analyzed are in PDF format.
-- Both programmatic and scanned PDF files are supported. Files that have been scanned and processed by an optical character reader (OCR) are also supported.
+For the example in this tutorial, the file must be in PDF or a supported image format.
   
   You can now submit PDF files that have been scanned and processed by an optical character reader (OCR).
   {: tip}
@@ -61,10 +60,10 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/el
   - `file` (**required** `file`): The input file that is to be classified
   - `model` (optional `string`): If this parameter is specified, the service runs the specified type of element classification. Currently, the only supported value is `contracts`.
 
-Replace `{apikey_value}` with the API key you copied earlier and `{PDF_file}` with the path to the PDF to parse.
+Replace `{apikey_value}` with the API key you copied earlier and `{input_file}` with the path to the file to parse.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -F "file=@{PDF_file};type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/element_classification?version=2018-10-15
+curl -X POST -u "apikey":"{apikey_value}" -F "file=@{input_file}" https://gateway.watsonplatform.net/compare-comply/api/v1/element_classification?version=2018-10-15
 ```
 {: pre}
 
@@ -134,14 +133,12 @@ Each element has five important sections:
   
 Additionally, each object in the `types` and `categories` arrays includes a `provenance_ids` array. The values listed in the `provenance_ids` array are hashed values that you can send to IBM to provide feedback or receive support about the part of the analysis associated with the element.
 
-Some sentences do not fall under any type or category, in which case the service returns the `types` and `categories` arrays as empty objects.
-{: note}
+**Note:**: Some sentences do not fall under any type or category, in which case the service returns the `types` and `categories` arrays as empty objects.
 
-Some sentences cover multiple topics, in which case the service returns multiple sets of `types` and `categories` objects.
-{: note}
+  Some sentences cover multiple topics, in which case the service returns multiple sets of `types` and `categories` objects.
 
-Some sentences do not contain any identifiable attributes, in which case the service returns the `attributes` array as empty objects.
-{: note}
+  Some sentences do not contain any identifiable attributes, in which case the service returns the `attributes` array as empty objects.
+
 
 ### Tables
 {: tables}
