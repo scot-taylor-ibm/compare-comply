@@ -25,7 +25,7 @@ lastupdated: "2018-11-07"
 The service provides Compare and Comply Tooling to enable you to work with governing documents in a GUI environment. This short tutorial introduces the Tooling and takes you through the process of uploading and analyzing documents, then working with the results.
 {: shortdesc}
 
-**Important:** The Compare and Comply Tooling currently accepts only PDF files as input. If you want to use another input format such as image or text, use the APIs instead of the Tooling.
+The Compare and Comply Tooling currently accepts only PDF files as input. If you want to use another input format such as image or text, use the APIs instead of the Tooling.
 {: important}
 
 ## Before you begin

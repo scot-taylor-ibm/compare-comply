@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-12-05"
 
 ---
 
@@ -44,10 +44,9 @@ The feedback API endpoints are as follows.
 Observe the following warnings and precautions when working with the feedback APIs.
 
   - Users of the feedback API must be able to provide accurate, consistent, and professionally informed feedback on documents. 
-  - Incorrect feedback can provide inaccurate results and can also remain in the document to cause future problems. 
-  - Exercise extreme caution if you are using the `POST` or `DELETE` methods.
-  - You cannot change posted feedback. You can, however, delete it and replace it by reposting.
-  - The unauthorized use of a `GET` method on a confidential document can potentially result in information being exposed to unauthorized users.
+  - Use extreme caution if you issue the `POST /v1/feedback` or `DELETE /v1/feedback/{feedback_id}` methods.
+  - You cannot change posted feedback. You can, however, delete it and replace it by reposting different feedback.
+  - The unauthorized use of a `GET /v1/feedback` or `GET /v1/feedback/{feedback_id}` method on a confidential document can potentially result in information being exposed to unauthorized users.
 
 ## Workflow for using feedback
 {: #feedback_steps}
@@ -72,9 +71,9 @@ These steps are described in more detail in the following sections.
 You can add feedback to a document programmatically by using the `POST /v1/feedback` method. 
 
 In a `bash` shell or equivalent environment such as Cygwin, issue the following command to add feedback to a document, with values as follows:
-  - Replace `{apikey_value}` with the API key you copied in [Before you begin in Getting Started](/docs/services/compare-comply/getting-started.html#before-you-begin).
+  - Replace `{apikey}` with the API key you copied in [Before you begin in Getting Started](/docs/services/compare-comply/getting-started.html#before-you-begin).
   - Create a `feedback_data` object, which is a specifically formatted object specifying the feedback you want to add to the document. The `feedback_data` object must be in the following format.
-    ```
+    ```json
     {
       "document": {
         "hash": string,
@@ -149,7 +148,7 @@ You can assemble the body of the `feedback_data` object as follows:
 An example command follows.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H 'Content-Type: application/json' 
+curl -X POST -u "apikey:{apikey}" -H 'Content-Type: application/json' 
 https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15 \
 -d '{
       "user_id": "7uy9c1f4-57dd-42b5-9586-a2ddf3ed8b64",
@@ -233,7 +232,7 @@ https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-1
 
 The output of the command resembles the following.
 
-```
+```json
 {
   "feedback_id": "9gh7c1f4-57dd-42b5-9586-a2ddf3ed8b34",
   "user_id": "7uy9c1f4-57dd-42b5-9586-a2ddf3ed8b64",
@@ -258,7 +257,7 @@ The output of the command resembles the following.
             "nature": "Obligation",
             "party": "IBM"
           },
-          "modification": "unchanged",
+          "modification": "not_changed",
           "provenance_ids": [
               "85f5981a-ba91-44f5-9efa-0bd22e64b7bc",
               "ce0480a1-5ef1-4c3e-9861-3743b5610795"
@@ -279,7 +278,7 @@ The output of the command resembles the following.
       "categories": [
         {
           "label": "Responsibilities",
-          "modification": "unchanged",
+          "modification": "not_changed",
           "provenance_ids": [
               "85f5981a-ba91-44f5-9efa-0bd22e64b7bc"
           ]
@@ -297,7 +296,7 @@ The output of the command resembles the following.
             "nature": "Obligation",
             "party": "IBM"
           },
-          "modification": "unchanged"
+          "modification": "not_changed"
         },
         {
           "label": {
@@ -310,7 +309,7 @@ The output of the command resembles the following.
       "categories": [
         {
           "label": "Responsibilities",
-          "modification": "unchanged"
+          "modification": "not_changed"
         },
         {
           "label": "Audits",
@@ -321,7 +320,6 @@ The output of the command resembles the following.
   }
 }
 ```
-{: screen}
 
 The command makes the following feedback:
 
@@ -356,10 +354,10 @@ You can retrieval all feedback that has been added to a document by using the `G
   - `model_version` (optional `string`): If this parameter is specified, the service returns only the records with the specified element model version.  
   - `category_removed` (optional `string`): A comma-separated list of `categories`. If this parameter is specified, the service returns only the records that have one or more of the specified `categories` removed. See [Categories](/docs/services/compare-comply/parsing.html#contract_categories) for a table of valid `categories`.
   - `category_added` (optional `string`): A comma-separated list of `categories`. If this parameter is specified, the service returns only the records that have one or more of the specified `categories` added. See [Categories](/docs/services/compare-comply/parsing.html#contract_categories) for a table of valid `categories`.
-  - `category_unchanged` (optional `string`): A comma-separated list of `categories`. If this parameter is specified, the service returns only the records that have one or more of the specified `categories` unchanged. See [Categories](/docs/services/compare-comply/parsing.html#contract_categories) for a table of valid `categories`.
+  - `category_not_changed` (optional `string`): A comma-separated list of `categories`. If this parameter is specified, the service returns only the records that have one or more of the specified `categories` unchanged. See [Categories](/docs/services/compare-comply/parsing.html#contract_categories) for a table of valid `categories`.
   - `type_removed` (optional `string`): A comma-separated list of `types` in which each `type` value is of the form `nature:party`. If this parameter is specified, the service returns only the records that have one or more of the specified types removed. See [Types](/docs/services/compare-comply/parsing.html#contract_types) for a table of valid `types` (that is, `nature` and `party` pairs).
   - `type_added` (optional `string`): A comma-separated list of `types` in which each `type` object is of the form `{"nature": "{nature}", "party": "{party}"}`. If this parameter is specified, the service returns only the records that have one or more of the specified types added. See [Types](/docs/services/compare-comply/parsing.html#contract_types) for a table of valid `types` (that is, `nature` and `party` pairs).
-  - `type_unchanged` (optional `string`): A comma-separated list of `types` in which each `type` value is of the form `nature:party`. If this parameter is specified, the service returns only the records that have one or more of the specified types unchanged. See [Types](/docs/services/compare-comply/parsing.html#contract_types) for a table of valid `types` (that is, `nature` and `party` pairs). 
+  - `type_not_changed` (optional `string`): A comma-separated list of `types` in which each `type` value is of the form `nature:party`. If this parameter is specified, the service returns only the records that have one or more of the specified types unchanged. See [Types](/docs/services/compare-comply/parsing.html#contract_types) for a table of valid `types` (that is, `nature` and `party` pairs). 
   - `page_limit` (optional `int`): The number of documents that you want to be returned in the response. The default is `10`. The maximum is `100`.
   - `cursor` (optional `string`): A string that lists the documents you want to be returned in the response.
   - `sort` (optional `string`): A comma-separated list of fields in the document on which to sort returned results. You can optionally specify a sort direction by prefixing the field with `-` for descending order or `+` for ascending order. Ascending order is the default sort direction.
@@ -367,13 +365,13 @@ You can retrieval all feedback that has been added to a document by using the `G
 A example command that combines the `type_added` and `category_removed` parameters is:
 
 ```bash
-curl -X GET -u "apikey":"{apikey_value}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15&type_added=Definition:None,Disclaimer:Supplier&category_removed=Assignments,Audits
+curl -X GET -u "apikey:{apikey}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15&type_added=Definition:None,Disclaimer:Supplier&category_removed=Assignments,Audits
 ```
 {: codeblock}
 
-The output of the command is a JSON array resembling the following.
+The output of the command resembles the following.
 
-```
+```json
 {
   "feedback": [
     {
@@ -400,7 +398,7 @@ The output of the command is a JSON array resembling the following.
                   "85f5981a-ba91-44f5-9efa-0bd22e64b7bc",
                   "ce0480a1-5ef1-4c3e-9861-3743b5610795"
               ],
-              "modification": "unchanged"
+              "modification": "not_changed"
             },
             {
               "label": {
@@ -418,7 +416,7 @@ The output of the command is a JSON array resembling the following.
             {
               "label": "Responsibilities",
               "provenance_ids": [],
-              "modification": "unchanged"
+              "modification": "not_changed"
             },
             {
               "label": "Amendments",
@@ -439,7 +437,7 @@ The output of the command is a JSON array resembling the following.
                 "nature": "Obligation",
                 "party": "IBM"
               },
-              "modification": "unchanged"
+              "modification": "not_changed"
             },
             {
               "label": {
@@ -452,7 +450,7 @@ The output of the command is a JSON array resembling the following.
           "categories": [
             {
               "label": "Responsibilities",
-              "modification": "unchanged"
+              "modification": "not_changed"
             },
             {
               "label": "Audits",
@@ -486,7 +484,7 @@ The output of the command is a JSON array resembling the following.
                   "85f5981a-ba91-44f5-9efa-0bd22e64b7bc",
                   "ce0480a1-5ef1-4c3e-9861-3743b5610795"
               ],
-              "modification": "unchanged"
+              "modification": "not_changed"
             },
             {
               "label": {
@@ -504,7 +502,7 @@ The output of the command is a JSON array resembling the following.
             {
               "label": "Responsibilities",
               "provenance_ids": [],
-              "modification": "unchanged"
+              "modification": "not_changed"
             },
             {
               "label": "Amendments",
@@ -525,7 +523,7 @@ The output of the command is a JSON array resembling the following.
                 "nature": "Obligation",
                 "party": "FPL"
               },
-              "modification": "unchanged"
+              "modification": "not_changed"
             },
             {
               "label": {
@@ -538,7 +536,7 @@ The output of the command is a JSON array resembling the following.
           "categories": [
             {
               "label": "Responsibilities",
-              "modification": "unchanged"
+              "modification": "not_changed"
             },
             {
               "label": "Audits",
@@ -558,7 +556,6 @@ The output of the command is a JSON array resembling the following.
   }
 }
 ```
-{: screen}
 
 ## Getting specific feedback
 {: #get_spec_feedback}
@@ -571,13 +568,13 @@ You can retrieve specific feedback from a document by using the `GET /v1/feedbac
 An example command is:
 
 ```bash
-curl -X GET -u "apikey":"{apikey_value}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback/9730b437-cb86-4d40-9a84-ff6948bb3dd1?version=2018-10-15
+curl -X GET -u "apikey:{apikey}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback/9730b437-cb86-4d40-9a84-ff6948bb3dd1?version=2018-10-15
 ```
 {: codeblock}
 
 The command returns output similar to the following:
 
-```
+```json
 {
   "feedback_id": "9730b437-cb86-4d40-9a84-ff6948bb3dd1",
   "user_id": "8049c229-4409-4dfe-bfb0-6577c9b361ab",
@@ -603,7 +600,7 @@ The command returns output similar to the following:
             "nature": "Obligation",
             "party": "IBM"
           },
-          "modification": "unchanged",
+          "modification": "not_changed",
           "provenance_ids": [
               "85f5981a-ba91-44f5-9efa-0bd22e64b7bc",
               "ce0480a1-5ef1-4c3e-9861-3743b5610795"
@@ -628,7 +625,7 @@ The command returns output similar to the following:
             "nature": "Obligation",
             "party": "IBM"
           },
-          "modification": "unchanged"
+          "modification": "not_changed"
         }
       ],
       "categories": [
@@ -641,7 +638,6 @@ The command returns output similar to the following:
   }
 }
 ```
-{: screen}
 
 <!--
 ###Deleting all feedback
@@ -650,14 +646,14 @@ The command returns output similar to the following:
 You can delete all feedback in a document collection by using the `DELETE /v1/feedback` method. The method requires only the `version` date parameter.
 
 ```bash
-curl -X DELETE -u "apikey":"{apikey_value}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15
+curl -X DELETE -u "apikey:{apikey}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15
 ```
 {: pre}
 
 Alternatively, you can delete all feedback from documents with a specific customer ID by specifying the ID in the call headers:
 
 ```bash
-curl -X DELETE -u "apikey":"{apikey_value}" -H 'x-watson-metadata: customer_id=3910' https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15
+curl -X DELETE -u "apikey:{apikey}" -H 'x-watson-metadata: customer_id=3910' https://gateway.watsonplatform.net/compare-comply/api/v1/feedback?version=2018-10-15
 ```
 {: pre}
 
@@ -683,16 +679,16 @@ You can delete specific feedback from a document by using the `DELETE /v1/feedba
 An example command is:
   
 ```bash
-curl -X DELETE -u "apikey":"{apikey_value}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback/5206038a-5ea0-4f48-bee1-0780c56c53c9?version=2018-10-15
+curl -X DELETE -u "apikey:{apikey}" https://gateway.watsonplatform.net/compare-comply/api/v1/feedback/5206038a-5ea0-4f48-bee1-0780c56c53c9?version=2018-10-15
 ```
 {: codeblock}
 
 The service returns the following output on success:
 
-```
+```json
 {
   "status": "200",
   "message": "Successfully deleted the feedback with id  - 5206038a-5ea0-4f48-bee1-0780c56c53c9"
 }
 ```
-{: screen}
+

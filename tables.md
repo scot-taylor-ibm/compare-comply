@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018
-lastupdated: "2018-11-07"
+lastupdated: "2018-12-05"
 
 ---
 
@@ -28,15 +28,15 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/ta
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
   - `file` (**required** `file`): The input file that is to be classified.
   - `model` (optional `string`): If this parameter is specified, the service runs the specified type of element classification. Currently, the only supported value is `contracts`.
-  
-Replace `{apikey_value}` with the API key you copied earlier and `{input_file}` with the path to the input file to parse.
+
+Replace `{apikey}` with the API key you copied earlier and `{input_file}` with the path to the input file to parse.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -F 'file=@{input_file}' https://gateway.watsonplatform.net/compare-comply/api/v1/tables?version=2018-10-15
+curl -X POST -u "apikey:{apikey}" -F 'file=@{input_file}' https://gateway.watsonplatform.net/compare-comply/api/v1/tables?version=2018-10-15
 ```
-{: pre}
+{: codeblock}
 
-See [Understanding the output schema](/docs/services/compare-comply/schema.html#output_schema) for information about the table parsing format.
+See [Classifying elements](/docs/services/compare-comply/schema.html#output_schema) for information about the table parsing format.
 
 The following is an example table from an input document.
  ![Example table](images/example-table.png)
@@ -47,7 +47,6 @@ The table is composed as follows:
 where:
 
 <ul>
-  <li><strong><em>Bold italic text</em></strong> indicates a table header</li>
   <li><strong>Bold text</strong> indicates a column header</li>
   <li><em>Italic text</em> indicates a row header</li>
   <li>Unstyled text indicates a body cell</li>
@@ -55,7 +54,7 @@ where:
   
 The output from service represents the example's first body cell (that is, the first cell in row 3 with a value of `35.0%`) as follows.
 
-```
+```json
 "tables": [ {
     "location": {
       "begin": 872,
@@ -69,29 +68,7 @@ The output from service represents the example's first body cell (that is, the f
         "end": 0
       }
     },
-    "table_headers" : [ {
-      "cell_id" : "tableHeader-872-873",
-      "location" : {
-        "begin" : 872,
-        "end" : 873
-      },
-      "text" : " ",
-      "row_index_begin" : 0,
-      "row_index_end" : 0,
-      "column_index_begin" : 0,
-      "column_index_begin" : 0
-    }, {
-      "cell_id" : "tableHeader-1381-1382",
-      "location" : {
-        "begin" : 1381,
-        "end" : 1382
-      },
-      "text" : " ",
-      "row_index_begin" : 1,
-      "row_index_end" : 1,
-      "column_index_begin" : 0,
-      "column_index_end" : 0
-    } ],
+    "table_headers" : [ ],
     "column_headers" : [ {
       "cell_id" : "colHeader-1050-1082",
       "location" : {
@@ -287,4 +264,4 @@ The output from service represents the example's first body cell (that is, the f
   ]
 }
 ```
-    
+

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-11-09"
+lastupdated: "2018-12-04"
 
 ---
 
@@ -24,26 +24,26 @@ lastupdated: "2018-11-09"
 
 You can transform an [input document](/docs/services/compare-comply/formats.html#formats) into HTML by using the `POST /v1/html_conversion` method. 
 
-In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/html_conversion` method to convert a PDF input document into HTML. The method takes the following input parameters:
+In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/html_conversion` method to convert an input document into HTML. The method takes the following input parameters:
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
-  - `file` (**required** `file`): The PDF input file that is to be converted into HTML.
+  - `file` (**required** `file`): The input file that is to be converted into HTML.
   - `model` (optional `string`): If this parameter is specified, the service runs the specified type of element classification. Currently, the only supported value is `contracts`.
   
 You can specify the response content type to return the converted HTML in either JSON (the default) or raw HTML. See the examples following the command example for the different formats.
   - To return JSON explicitly, specify the header `-H "Accept: application/json"`. This is the default.
   - To return raw HTML, specify the header `-H "Accept: text/html"`.
-  
-Replace `{apikey_value}` with the API key you copied earlier and `{input_file}` with the path to the input file to convert.
+
+Replace `{apikey}` with the API key you copied earlier and `{input_file}` with the path to the input file to convert.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H "Accept: application/json"
--F "file=@{input_file};type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/html_conversion?version=2018-10-15
+curl -X POST -u "apikey:{apikey}" -H "Accept: application/json"
+-F "file=@{input_file}" https://gateway.watsonplatform.net/compare-comply/api/v1/html_conversion?version=2018-10-15
 ```
-{: pre}
+{: codeblock}
 
 In this example, the header `-H "Accept: application/json"` returns output in the following format:
 
-```
+```json
 {
   "num_pages": "18",
   "author": "SOME_USER",
@@ -52,11 +52,9 @@ In this example, the header `-H "Accept: application/json"` returns output in th
   "html": "<?xml version='1.0' encoding='UTF-8' standalone='yes'?><html>...</html>"
 }
 ```
-{: screen}
 
 If you specify `-H "Accept: text/html"`, the service returns only the contents of the `"html"` field from the previous output example:
 
 ```
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?><html>...</html>
 ```
-{: screen}
