@@ -31,11 +31,12 @@ IBM Watson&reg; Compare and Comply supports a variety of input formats, includin
 Observe the following notes regarding files submitted to Compare and Comply.
 
   - For optimal results, specify the MIME type when submitting a file. For example, if you submit a PDF file, it is recommended that you specify the file as follows:
-     ```
+     ```bash
      curl -u "apikey:{apikey}" -F "file=@myFile.pdf;type=application/pdf" https://gateway.watsonplatform.net/compare-comply/api/v1/{method_name}?version=2018-10-15
      ```
      {: pre}
     MIME types are provided with the supported file types listed in the following sections.
+
   - Files can be up to 1.5 MB in size when submitted to the service with individual methods. If you submit files through the [`/v1/batches` interface](/docs/services/compare-comply/batching.html#batching), files can be up to 50 MB in size.
   - Documents with non-standard page layouts (such as 2 or 3 columns per page) do not parse correctly.
   - The [Compare and Comply Tooling](/docs/services/compare-comply/tooling.html#tooling) currently accepts **only** PDF files.
@@ -90,6 +91,7 @@ The service's methods can accept different types of files as specified in the fo
 
 \* The `/v1/comparison` method also accepts JSON files from the output of the `/v1/element_classification` method.
 {: note}
+
 
 The `/v1/feedback` methods do not accept image or text files. 
 
