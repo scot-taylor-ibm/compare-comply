@@ -34,12 +34,6 @@ Compare and Comply is designed to provide:
 
 Compare and Comply brings together a functionally rich set of integrated, automated Watson APIs to input a file to identify sections, lists (numbered and bulleted), footnotes, and tables, converting these items into a structured HTML format. Furthermore, classification of this structured format is annotated and output as JSON with labeled elements, types, categories, and other information.
 
-
-## Beta features
-{: #beta_features}
-
-IBM will release services, features, and language support that are classified as beta or experimental. These capacities can be unstable, can change frequently, and can be discontinued with short notice. They are provided so you can evaluate their functionality. A beta or experimental capacity might not provide the same level of performance or compatibility that generally released capacities provide. These capacities are not designed for use in a production environment, and any such use is at your own risk.
-
 To get started with the service, see the [Getting started](/docs/services/compare-comply/getting-started.html) page.
 
 
