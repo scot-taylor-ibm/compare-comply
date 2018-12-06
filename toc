@@ -2,30 +2,35 @@
 {:topicgroup: .topicgroup}
 
 {: .toc subcollection="compare-comply" audience="service" href="/docs/services/compare-comply/index.html" path="services/compare-comply"}
-Compare and Comply: Beta
+Compare and Comply
 
     {: .navgroup id="learn"}
     index.md
     getting-started.md
-    schema.md
-    parsing.md
-    doc_structure.md
     formats.md
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
-    compare.md
+    html_convert.md
+    
+    {: topicgroup}
+    Element classification
+        schema.md
+        parsing.md
+        doc_structure.md
+    
     tables.md
-    html_convert.md    
+    compare.md
+    invoices.md 
     feedback.md
     tooling.md
-    batching.md    
+    batching.md
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
     information-security.md
     at-events.md
-    [API Docs](https://console.bluemix.net/apidocs/compare-comply)
+    [API Docs](https://cloud.ibm.com/apidocs/compare-comply)
     
 
     {: .navgroup-end}
