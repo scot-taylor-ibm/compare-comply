@@ -34,6 +34,7 @@ Compare and Comply is designed to provide:
 
 Compare and Comply brings together a functionally rich set of integrated, automated Watson APIs to input a file to identify sections, lists (numbered and bulleted), footnotes, and tables, converting these items into a structured HTML format. Furthermore, classification of this structured format is annotated and output as JSON with labeled elements, types, categories, and other information.
 
+
 ## Beta features
 {: #beta_features}
 

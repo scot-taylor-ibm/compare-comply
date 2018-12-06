@@ -3,7 +3,6 @@
 copyright:
   years: 2017, 2018
 lastupdated: "2018-12-05"
-
 ---
 
 {:shortdesc: .shortdesc}
@@ -143,6 +142,7 @@ Some sentences cover multiple topics, in which case the service returns multiple
   
 Some sentences do not contain any identifiable attributes, in which case the service returns the `attributes` array as empty objects.
 {: note}
+
 
 
 ### Tables
