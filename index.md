@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-05"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -22,17 +22,17 @@ lastupdated: "2018-12-05"
 # About
 {: #about}
 
-IBM Watson&trade; Compare and Comply is a collection of advanced APIs that enable better and faster document understanding. The APIs are pre-trained to handle document conversion, table understanding, Natural Language Processing, and comparison for contracts. JSON output adds real power to end-user applications, for a wide variety of use cases. The machine learning feedback interface is available to collect your feedback which is then incorporated into regular improvements to the core NLP model; the more you use it, the better the system performs.
+IBM Watson&trade; Compare and Comply enables understanding of governing business documents with pre-trained models so enterprises can get started in minutes. The document conversion (scanned PDFs, TIFFs, JPEG, Word) capabilities enable both machine-to-machine and machine-to-human readable formats. The table understanding, element classification and compare capabilities of Compare and Comply enable automation of complex business processes such as contract review and negotiation, invoice reconciliation, software entitlement verification, and more. Such automation of processes will result in increased productivity, minimization of costs, and reduced exposure.
 
-Compare and Comply is designed to provide:
+Compare and Comply provides:
 
-  - Natural language understanding of contracts and invoices
-  - The ability to convert programmatic or scanned PDF documents, Microsoft Word files, image files, and text files to annotated JSON or to HTML
-  - Identification of legal entities and categories that align with subject matter expertise
-  - The ability to extract table information from an input document
-  - The ability to compare two contracts
-
-Compare and Comply brings together a functionally rich set of integrated, automated Watson APIs to input a file to identify sections, lists (numbered and bulleted), footnotes, and tables, converting these items into a structured HTML format. Furthermore, classification of this structured format is annotated and output as JSON with labeled elements, types, categories, and other information.
+  - Natural language understanding of contracts and other governing documents
+  - Conversion of scanned documents (PDF, tiff, jpg) and Word into HTML
+  - Identification of parties in the contracts and the obligations and rights assigned to each
+  - Automatic labeling of sentences in contracts with categories such as  termination, privacy, payment terms, and more
+  - A Compare API that analyzes two contracts, side-by-side, and highlights similarities and differences at the level of individual clauses
+  - Table extraction, which parses each cell in the table and associates metadata such as row and column headers
+  - A feedback API and user interface that lets subject matter experts send corrections and suggestions to IBM data science teams for continuous improvements of models
 
 To get started with the service, see the [Getting started](/docs/services/compare-comply/getting-started.html) page.
 
