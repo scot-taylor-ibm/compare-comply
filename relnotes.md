@@ -1,9 +1,8 @@
-
 ---
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-07"
+lastupdated: "2018-12-05"
 
 ---
 
@@ -28,9 +27,6 @@ The release notes provide information about changes to the IBM Watson Compare an
 ## Beta features
 {: #beta_features}
 
-**Important:** Compare and Comply is a beta service.
-{: important}
-
 IBM will release services, features, and language support that are classified as beta or experimental. These capacities can be unstable, can change frequently, and can be discontinued with short notice. They are provided so you can evaluate their functionality. A beta or experimental capacity might not provide the same level of performance or compatibility that generally released capacities provide. These capacities are not designed for use in a production environment, and any such use is at your own risk.
 
 IBM is under no obligation to offer migration capabilities or services. You are responsible for removing content you want to retain prior to expiration or termination of the beta service.
@@ -49,6 +45,27 @@ The current version is `2018-10-15`.
 
 The following new features and changes to the service are available.
 
+### General Availability release, 6 December 2018
+{: #6-dec-2018}
+
+The Compare and Comply service is now generally available. The GA release includes the following new features and enhancements:
+
+  - The `POST /v1/invoices` method extracts entities and concepts specific to invoice documents. The `invoices` model is separate from the `contracts` and `tables` models that the service already provides. For more information, see [Understanding invoice parsing](/docs/services/compare-comply/invoices.html#invoices). <br/>
+    **Note:** Only the `curl` API is available for this method. The method is not currently provided in other SDKs (Java, Python, Node.js, Ruby, Go).
+  - The output of the `POST /v1/comparison` method now includes a boolean named `significant_elements` that indicates if the aligned text contains contractual clauses of significance.. For more information, see [Comparing two documents](/docs/services/compare-comply/compare.html#compare).
+  - The service accepts Microsoft Word files (DOC, DOCX). For more information, see [Supported input formats](/docs/services/compare-comply/formats.html#formats). The following table lists File-type support by method.
+
+| Method           |PDF support   |Word support     |Image support        |Text support    |
+|------------------|-----------------|-----------------------------------------|
+|`/v1/html_conversion`| Supported | Supported | All supported image formats | Supported |
+|`/v1/element_classification`| Supported | Supported | All supported image formats | **Not** supported |
+|`/v1/tables`      | Supported | Supported | All supported image formats | Supported |
+|`/v1/invoices`    | Supported | Supported | All supported image formats | **Not** supported |
+|`/v1/comparison`*  | Supported | Supported | All supported image formats | **Not** supported |
+
+\* The `/v1/comparison` method also accepts JSON files from the output of the `/v1/element_classification` method.
+{: note}
+
 ### 9 November 2018
 {: #9nov2018}
 
@@ -65,16 +82,7 @@ Supported image formats currently include the following. Scanned image files mus
   - RAW
   - TIFF
 
-The service's methods can accept different types of files as specified in the following table.
-
-| Method           |Image support    |Text support                             |
-|------------------|-----------------|-----------------------------------------|
-|`/v1/html_conversion`| All supported image formats | Supported |
-|`/v1/element_classification`|  All supported image formats | **Not** supported|
-|`/v1/tables`      | All supported image formats | Supported |
-|`/v1/comparison`*  | All supported image formats | **Not** supported|
-
-\* **Note:** The `/v1/comparison` method still accepts JSON files.
+See the table at [General Availability release, 6 December 2018](#6-dec-2018) for supported file types.
 
 The `/v1/feedback` methods do not accept image or text files. 
 
@@ -87,8 +95,8 @@ The `/v1/batches` methods accept images and text files according to the method c
 {: important}
 
   - A new API version date (`2018-10-15`). If you specify an API version date earlier than `2018-10-15`, you call an older API that most likely has different method names and parameters than those documented for the current release.
-  - Changes to the output schema for the `/v1/element_classification` method. See [Getting started](/docs/services/compare-comply/getting-started.html#getting_started) and [Understanding the output schema](/docs/services/compare-comply/schema.html#output_schema) for details.
-  - Changes to the `/v1/tables` method's output schema. See [Understanding the output schema](/docs/services/compare-comply/schema.html#output_schema) and [Classifying tables](/docs/services/compare-comply/tables.html#understanding_tables) for information about the table parsing format.
+  - Changes to the output schema for the `/v1/element_classification` method. See [Getting started](/docs/services/compare-comply/getting-started.html#getting_started) and [Classifying elements](/docs/services/compare-comply/schema.html#output_schema) for details.
+  - Changes to the `/v1/tables` method's output schema. See [Classifying elements](/docs/services/compare-comply/schema.html#output_schema) and [Classifying tables](/docs/services/compare-comply/tables.html#understanding_tables) for information about the table parsing format.
   - Changes to the input and output parameters in the `/v1/feedback` and `/v1/feedback/{feedback_id}` methods. See [Using the feedback APIs](/docs/services/compare-comply/feedback.html#feedback).
 
 ### 30 August 2018
@@ -109,3 +117,4 @@ Beta release with the following features that have been introduced since the exp
 - The maximum size of an input file that can be uploaded to the service in interactive mode (that is, with a method not called by the `/v1/batches` interface, as well as in the Compare and Comply Tooling) is 1.5 MB. Files submitted through the `/v1/batches` interface can be up to 50 MB. See [Using batch processing](/docs/services/compare-comply/batching.html#batching) for information on the `/v1/batches` interface.
 - PDFs with security enabled cannot be parsed.
 - Documents with non-standard page layouts (such as 2 or 3 columns per page) do not parse correctly.
+

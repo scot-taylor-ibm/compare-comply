@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-11-05"
+lastupdated: "2018-12-05"
 
 ---
 
@@ -70,7 +70,7 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/ba
   - `output_bucket_name` (**required** `string`): The name of the COS output bucket.
   
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" \ 
+curl -X POST -u "apikey:{apikey}" \ 
 https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10-15&function=element_classification \
   -F input_credentials_file=@{path/to/input_credentials_file} \
   -F input_bucket_location={geography} \
@@ -84,7 +84,7 @@ https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10
 The values of the `input_credentials_file` and `output_credentials_file` are files that contain the COS service credentials as a JSON object. You can obtain the JSON from the COS web console page on the **Service credentials** tab. The JSON resembles the following:
 {: note}
 
-```
+```json
 {
   "apikey": "ursB8336HDIeqbUmz1D1iuK_ddM0K2bKxvZjY3EEbl98",
   "endpoints": "https://cos-service.bluemix.net/endpoints",
@@ -95,7 +95,6 @@ The values of the `input_credentials_file` and `output_credentials_file` are fil
   "resource_instance_id": "crn:v1:bluemix:public:cloud-object-storage:global:a/a75da04c40cf41c9d881eadd3812339c:73389937-2ab2-4f92-83d3-69c2b6b78ea7::"
 }
 ```
-{: screen}
 
 The following example command creates and runs a batch request with the following attributes:
 
@@ -109,7 +108,7 @@ The following example command creates and runs a batch request with the followin
   
  
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" \ 
+curl -X POST -u "apikey:{apikey}" \ 
 https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10-15&function=element_classification \
     -F input_credentials_file=@/Users/jsmith/cos_input_creds.json \
     -F input_bucket_location=us-geo \
@@ -122,7 +121,7 @@ https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10
 
 The method returns the batch-request status as a JSON object, as in the following example.
 
-```
+```json
 {
   "function": "element_classification",
   "input_bucket_location": "us-geo",
@@ -141,7 +140,6 @@ The method returns the batch-request status as a JSON object, as in the followin
   "updated": "2018-07-30T20:26:09.433+0000"
 }
 ```
-{: screen}
 
 The returned status object, which is identical for all `/v1/batches` methods, contains the count of all documents in the batch (`total`), the count of documents that have not yet been processed (`pending`), the count of documents that have been successfully processed (`successful`), and the count of documents that were unable to be processed (`failed`).
 
@@ -164,14 +162,14 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `GET /v1/bat
   - `status` (optional `string`): An optional status string used to filter the output. Permitted values are `pending`, `active`, `completed`, and `canceled`.
 
 ```bash
-curl -X GET -u "apikey":"{apikey_value}" \ 
+curl -X GET -u "apikey:{apikey}" \ 
 https://gateway.watsonplatform.net/compare-comply/api/v1/batches?version=2018-10-15
 ```
 {: codeblock}
 
 The method returns a JSON object that contains batch-request status objects, as in the following example:
 
-```
+```json
 {
     "batches": [
         {
@@ -211,7 +209,6 @@ The method returns a JSON object that contains batch-request status objects, as 
     ]
 }
 ```
-{: screen}
 
 ## Get the status of a specified batch request
 {: #get-spec-batch}
@@ -223,14 +220,14 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `GET /v1/bat
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
 
 ```bash
-curl -X GET -u "apikey":"{apikey_value}" \ 
+curl -X GET -u "apikey:{apikey}" \ 
 https://gateway.watsonplatform.net/compare-comply/api/v1/batches/0a7f8ab8-97a0-4b67-9fea-feacafbb0b20?version=2018-10-15
 ```
 {: codeblock}
 
 The method returns a JSON object that provides the status of the specified batch request, as in the following example:
 
-```
+```json
 {
     "function": "html_conversion",
     "input_bucket_location": "us-geo",
@@ -248,7 +245,6 @@ The method returns a JSON object that provides the status of the specified batch
     "updated": "2018-07-30T20:10:41.830+0000"
 }
 ```
-{: screen}
 
 ## Rescan the input bucket
 {: #put-add-batch}
@@ -261,14 +257,14 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `PUT /v1/bat
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
 
 ```bash
-curl -X PUT -u "apikey":"{apikey_value}" \ 
+curl -X PUT -u "apikey:{apikey}" \ 
 https://gateway.watsonplatform.net/compare-comply/api/v1/batches/0a7f8ab8-97a0-4b67-9fea-feacafbb0b20?version=2018-10-15&action=rescan
 ```
 {: codeblock}
 
 The method returns a JSON object that provides the status of the specified batch request, as in the following example:
 
-```
+```json
 {
   "function": "html_conversion",
   "input_bucket_location": "us-geo",
@@ -286,7 +282,6 @@ The method returns a JSON object that provides the status of the specified batch
   "updated": "2018-07-30T20:16:22.724+0000"
 }
 ```
-{: screen}
 
 ## Cancel a batch request
 {: #put-cancel-batch}
@@ -299,14 +294,14 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `PUT /v1/bat
   - `version` (**required** `string`): A date in the format `YYYY-MM-DD` that identifies the specific version of the API to use when processing the request.
 
 ```bash
-curl -X PUT -u "apikey":"{apikey_value}" \ 
+curl -X PUT -u "apikey:{apikey}" \ 
 https://gateway.watsonplatform.net/compare-comply/api/v1/batches/0a7f8ab8-97a0-4b67-9fea-feacafbb0b20?version=2018-10-15&action=cancel
 ```
 {: codeblock}
 
 The method returns a JSON object that provides the status of the specified batch request, as in the following example:
 
-```
+```json
 {
   "function": "html_conversion",
   "input_bucket_location": "us-geo",
@@ -324,6 +319,5 @@ The method returns a JSON object that provides the status of the specified batch
   "updated": "2018-07-30T20:21:22.724+0000"
 }
 ```
-{: screen}
 
 

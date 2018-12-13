@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018
-lastupdated: "2018-11-07"
+lastupdated: "2018-12-05"
 
 ---
 
@@ -36,29 +36,27 @@ Identify two documents to compare. See [Step 1 in Getting started](/docs/service
 {: #step2}
 
 In a `bash` shell or equivalent environment such as Cygwin, issue the following command to compare the documents, with values as follows:
-  - Replace `{apikey_value}` with the API key you copied in [Before you begin in Getting Started](/docs/services/compare-comply/getting-started.html#before-you-begin).
-  - Replace `{file_1}` and `{file_2}` with the path to the PDF or JSON files you want to compare.
+  - Replace `{apikey}` with the API key you copied in [Before you begin in Getting Started](/docs/services/compare-comply/getting-started.html#before-you-begin).
+  - Replace `{file_1}` and `{file_2}` with the path to the files you want to compare.
   - Optionally specify values for `file_1_label` and `file_2_label` to identify files 1 and 2, respectively. If you do not specify labels, the method uses the default label values `file_1` and `file_2`.
   - Optionally specify the value `contracts` for the `model` parameter. The only model value accepted by the `POST /v1/comparison` method is `contracts`.
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file1=@/Users/Downloads/{file_1}" -F "file2=@/Users/Downloads/{file_2}" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15&model=contracts
+curl -X POST -u "apikey:{apikey}" -H "Content-Type: multipart/form-data" -F "file_1=@/Users/Downloads/{file_1}" -F "file_2=@/Users/Downloads/{file_2}" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15&model=contracts
 ```
-{: pre}
 
 If you are submitting JSON files for comparison, specify the media type for the JSON files as follows:
 
 ```bash
-curl -X POST -u "apikey":"{apikey_value}" -H "Content-Type: multipart/form-data" -F "file_1=@/Users/Downloads/{file_1}.json;type=application/json" -F "file_2=@/Users/Downloads/{file_2}.json;type=application/json" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15
+curl -X POST -u "apikey:{apikey}" -H "Content-Type: multipart/form-data" -F "file_1=@/Users/Downloads/{file_1}.json;type=application/json" -F "file_2=@/Users/Downloads/{file_2}.json;type=application/json" -F file_1_label="document_1" -F file_2_label="document_2" https://gateway.watsonplatform.net/compare-comply/api/v1/comparison?version=2018-10-15
 ```
-{: pre}
 
 ## Step 3: Review the comparison
 {: #step3}
 
 The method returns a JSON object that contains the aligned and unaligned elements. The JSON object uses the following schema:
 
-```
+```json
 {
   "model_id" : string,
   "model_version" : string,
@@ -131,6 +129,7 @@ The method returns a JSON object that contains the aligned and unaligned element
         }
       ],
       "identical_text": boolean,
+      "significant_elements": boolean,
       "provenance_ids": [ string, ... ]
     },
     ...
@@ -165,7 +164,6 @@ The method returns a JSON object that contains the aligned and unaligned element
   ] 
 }
 ```
-{: screen}
 
 The JSON output includes five objects, three of which are arrays:
   - `model_id`: The model or subdomain used for the comparison. Currently, the only supported value is `contracts`.
@@ -174,8 +172,10 @@ The JSON output includes five objects, three of which are arrays:
     - The `title` key inside the `documents` array lists the filename of an input document.
     - The `html` key contains the HTML version of the input file. It represents the HTML over which element spans are applied.
     - The `hash` key contains the MD5 hash value of the input file.
-    - The `label` keys that appear inside the arrays contain the values passed as `file_1_label` or `file_2_label`, depending on which input document the entry represents.
+    - The `label` keys that appear inside the arrays contain the values passed as `file_1_label` or `file_2_label`, depending on which input document the entry represents. If you did not specify values for `file_1_label` or `file_2_label`, the service uses the default label values `file_1` and `file_2`, respectively.
   - `aligned_elements`: An array that lists pairs of elements that semantically align in the compared documents.
+    - The `identical_text` key is a boolean that indicates if the aligned text is identical.
+    - The `significant_elements` key is a boolean that indicates if the aligned text contains contractual clauses of significance. An _insignificant_ element is one that has no `types` or `categories`, has text that is shorter in length, and is not a structural element such as a section title, a leading sentence, or a list item.
   - `unaligned_elements`: An array that lists elements that do not semantically align between the compared documents.
   
   The `provenance_ids` field is useful when applying feedback to compared documents.
@@ -183,7 +183,7 @@ The JSON output includes five objects, three of which are arrays:
   
 A sample output file resembles the following:
 
-```
+```json
 {
  "model_id" : "contracts",
  "model_version" : "1.0.0",
@@ -242,6 +242,7 @@ A sample output file resembles the following:
         }
       ],
       "identical_text": true,
+      "significant_elements": true,
       "provenance_ids": [ "R1432223" ]
     },
     ...
@@ -262,4 +263,4 @@ A sample output file resembles the following:
   ]
 }
 ```
-{: screen}
+
