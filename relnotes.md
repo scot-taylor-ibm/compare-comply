@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-05"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -57,6 +57,7 @@ The Compare and Comply service is now generally available. The GA release includ
 
 | Method           |PDF support   |Word support     |Image support        |Text support    |
 |------------------|-----------------|-----------------------------------------|
+|Tooling           | Supported    | Supported | All supported image formats | **Not** supported |
 |`/v1/html_conversion`| Supported | Supported | All supported image formats | Supported |
 |`/v1/element_classification`| Supported | Supported | All supported image formats | **Not** supported |
 |`/v1/tables`      | Supported | Supported | All supported image formats | Supported |
@@ -91,7 +92,7 @@ The `/v1/batches` methods accept images and text files according to the method c
 ### 30 October 2018
 {: #30oct2018}
 
-**Important:** Changes to the service's API and output schema are ongoing throughout the course of the beta. The API and output schema will be stabilized when the service becomes generally available (GA). When writing applications that access the service, be aware that the API calls and output can change in a future release; applications that access the service therefore need not to be used in a production environment. The following list summarizes the major API and schema changes in the current release.
+Changes to the service's API and output schema are ongoing throughout the course of the beta. The API and output schema will be stabilized when the service becomes generally available (GA). When writing applications that access the service, be aware that the API calls and output can change in a future release; applications that access the service therefore need not to be used in a production environment. The following list summarizes the major API and schema changes in the current release.
 {: important}
 
   - A new API version date (`2018-10-15`). If you specify an API version date earlier than `2018-10-15`, you call an older API that most likely has different method names and parameters than those documented for the current release.

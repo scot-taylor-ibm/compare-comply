@@ -3,6 +3,7 @@
 copyright:
   years: 2017, 2018
 lastupdated: "2018-12-05"
+
 ---
 
 {:shortdesc: .shortdesc}
@@ -21,10 +22,22 @@ lastupdated: "2018-12-05"
 # Getting started
 {: #getting_started}
 
+## Where to start
+{: #start-options}
+
+**Get started with the API**
 This short tutorial introduces IBM Watson&reg; Compare and Comply and goes through the process of classifying a contract to identify component pieces, their nature, the parties affected, and any identified categories.
 {: shortdesc}
 
 This tutorial uses the `/v1/element_classification` method. Other service methods have similar input syntax and output formats. For more information, see the pages for other methods.
+
+**Get started with the tooling**
+Optionally, you can explore Element Classification using the Compare and Comply tooling. Information about the Compare and Comply tool can be found [here]((/docs/services/compare-comply/tooling.html).
+
+**Request Limited Preview Features**
+Compare and Comply has the following beta and experimental features that can be accessed by request:
+  -  Invoice Understanding: Compare and comply finds and extracts important information such as buyer, supplier, invoice date, and amount owed. Please fill out the following [form](http://ibm.biz/invoices) to gain access to this feature.
+
 
 ## Before you begin
 {: #before-you-begin}
@@ -142,7 +155,6 @@ Some sentences cover multiple topics, in which case the service returns multiple
   
 Some sentences do not contain any identifiable attributes, in which case the service returns the `attributes` array as empty objects.
 {: note}
-
 
 
 ### Tables
