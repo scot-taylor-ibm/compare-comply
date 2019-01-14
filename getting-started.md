@@ -1,8 +1,9 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-05"
+  years: 2017, 2019
+lastupdated: "2018-01-10"
+
 ---
 
 {:shortdesc: .shortdesc}
@@ -21,10 +22,22 @@ lastupdated: "2018-12-05"
 # Getting started
 {: #getting_started}
 
+## Where to start
+{: #start-options}
+
+**Get started with the API**
 This short tutorial introduces IBM Watson&reg; Compare and Comply and goes through the process of classifying a contract to identify component pieces, their nature, the parties affected, and any identified categories.
 {: shortdesc}
 
 This tutorial uses the `/v1/element_classification` method. Other service methods have similar input syntax and output formats. For more information, see the pages for other methods.
+
+**Get started with the tooling**
+Optionally, you can explore Element Classification using the Compare and Comply tooling. Information about the Compare and Comply tool can be found [here]((/docs/services/compare-comply/tooling.html).
+
+**Request Limited Preview Features**
+Compare and Comply has the following beta and experimental features that can be accessed by request:
+  -  Invoice Understanding: Compare and comply finds and extracts important information such as buyer, supplier, invoice date, and amount owed. Please fill out the following [form](http://ibm.biz/invoices) to gain access to this feature.
+
 
 ## Before you begin
 {: #before-you-begin}
@@ -144,7 +157,6 @@ Some sentences do not contain any identifiable attributes, in which case the ser
 {: note}
 
 
-
 ### Tables
 {: tables}
 
@@ -158,13 +170,14 @@ The `document_structure` object identifies the section titles and leading senten
 ### Parties
 {: #parties}
 
-The `parties` array lists available information about parties that are affected by the input document, including the party's name, role, address or addresses, and contacts. For more information, see [Parties](/docs/services/compare-comply/parsing.html##contract_parties) in [Understanding element classification](/docs/services/compare-comply/parsing.html#contract_parsing).
+The `parties` array lists available information about parties that are affected by the input document, including the party's name, role, importance, address or addresses, and contacts. For more information, see [Parties](/docs/services/compare-comply/parsing.html##contract_parties) in [Understanding element classification](/docs/services/compare-comply/parsing.html#contract_parsing).
 
 ```json
   "parties": [
       {
       "party": "Wolfbone Investments, LLC",
       "role": "Supplier",
+      "importance": "Primary",
       "addresses": [],
       "contacts": [
         {
@@ -177,6 +190,7 @@ The `parties` array lists available information about parties that are affected 
     {
       "party": "Torchlight Energy, Inc.",
       "role": "Buyer",
+      "importance": "Primary",
       "addresses": [
        {
        "text": "5700 W. Plano Pkwy., Ste. 3600, Plano, Texas 75093",

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-05"
+  years: 2017, 2019
+lastupdated: "2018-01-09"
 
 ---
 
@@ -45,25 +45,40 @@ The current version is `2018-10-15`.
 
 The following new features and changes to the service are available.
 
+### 8 January 2019
+{: #8-jan-2019}
+
+The release includes the following updates:
+
+  - The output of the `/v1/tables` method now includes an `attributes` array for each body cell. For more information, see [Classifying elements](/docs/services/compare-comply/schema.html#output_schema) and [Attributes](/docs/services/compare-comply/parsing.html#attributes).
+  - The output of the `/v1/element_classification` method now includes the following:
+    - The `parties` array now includes an `importance` field that indicates whether the party is a `Primary` party or an `Unknown` (non-primary) party.
+    - The `effective_dates`, `contract_amounts`, and `termination_dates` arrays now each include a `confidence_level` field that indicates a value of `High`, `Medium`, or `Low`.
+    For more information, see [Classifying elements](/docs/services/compare-comply/schema.html#output_schema) and [Understanding element classification](/docs/services/compare-comply/parsing.html#contract_parsing).
+  - The Compare and Comply Tooling includes several enhancements and bug fixes. For more information, see [Using the Compare and Comply Tooling](/docs/services/compare-comply/tooling.html#using_tool).
+
 ### General Availability release, 6 December 2018
 {: #6-dec-2018}
 
 The Compare and Comply service is now generally available. The GA release includes the following new features and enhancements:
 
   - The `POST /v1/invoices` method extracts entities and concepts specific to invoice documents. The `invoices` model is separate from the `contracts` and `tables` models that the service already provides. For more information, see [Understanding invoice parsing](/docs/services/compare-comply/invoices.html#invoices). <br/>
-    **Note:** Only the `curl` API is available for this method. The method is not currently provided in other SDKs (Java, Python, Node.js, Ruby, Go).
+    **Note:** Only the `curl` API is available for this method. The method is not currently provided in other SDKs (Java, Python, Node.js, Ruby).
   - The output of the `POST /v1/comparison` method now includes a boolean named `significant_elements` that indicates if the aligned text contains contractual clauses of significance.. For more information, see [Comparing two documents](/docs/services/compare-comply/compare.html#compare).
-  - The service accepts Microsoft Word files (DOC, DOCX). For more information, see [Supported input formats](/docs/services/compare-comply/formats.html#formats). The following table lists File-type support by method.
+  - The service accepts Microsoft Word files (DOC, DOCX). For more information, see [Supported input formats](/docs/services/compare-comply/formats.html#formats). 
+  
+The following table lists file-type support by method.
 
 | Method           |PDF support   |Word support     |Image support        |Text support    |
 |------------------|-----------------|-----------------------------------------|
+|Tooling*           | Supported    | Supported | All supported image formats | **Not** supported |
 |`/v1/html_conversion`| Supported | Supported | All supported image formats | Supported |
 |`/v1/element_classification`| Supported | Supported | All supported image formats | **Not** supported |
 |`/v1/tables`      | Supported | Supported | All supported image formats | Supported |
 |`/v1/invoices`    | Supported | Supported | All supported image formats | **Not** supported |
 |`/v1/comparison`*  | Supported | Supported | All supported image formats | **Not** supported |
 
-\* The `/v1/comparison` method also accepts JSON files from the output of the `/v1/element_classification` method.
+\* The Tooling and `/v1/comparison` method also accept JSON files from the output of the `/v1/element_classification` method.
 {: note}
 
 ### 9 November 2018
@@ -73,7 +88,7 @@ Compare and Comply now has the ability to process certain image files and text f
 
 The service can process "plain" text (ASCII) files that use a monospaced font and page breaks. Richer text formats that include non-monospaced fonts and style attributes such as bold and italics are not yet supported. If you need to process an enriched text file, convert it to PDF before submitting it to the service.
 
-Supported image formats currently include the following. Scanned image files must have a resolution of at least 300 DPI.
+Supported image formats currently include the following. 
   - BMP
   - GIF
   - JPEG
@@ -91,7 +106,7 @@ The `/v1/batches` methods accept images and text files according to the method c
 ### 30 October 2018
 {: #30oct2018}
 
-**Important:** Changes to the service's API and output schema are ongoing throughout the course of the beta. The API and output schema will be stabilized when the service becomes generally available (GA). When writing applications that access the service, be aware that the API calls and output can change in a future release; applications that access the service therefore need not to be used in a production environment. The following list summarizes the major API and schema changes in the current release.
+Changes to the service's API and output schema are ongoing throughout the course of the beta. The API and output schema will be stabilized when the service becomes generally available (GA). When writing applications that access the service, be aware that the API calls and output can change in a future release; applications that access the service therefore need not to be used in a production environment. The following list summarizes the major API and schema changes in the current release.
 {: important}
 
   - A new API version date (`2018-10-15`). If you specify an API version date earlier than `2018-10-15`, you call an older API that most likely has different method names and parameters than those documented for the current release.

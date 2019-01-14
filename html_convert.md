@@ -32,7 +32,7 @@ In a `bash` shell or equivalent environment such as Cygwin, use the `POST /v1/ht
 You can specify the response content type to return the converted HTML in either JSON (the default) or raw HTML. See the examples following the command example for the different formats.
   - To return JSON explicitly, specify the header `-H "Accept: application/json"`. This is the default.
   - To return raw HTML, specify the header `-H "Accept: text/html"`.
-
+  
 Replace `{apikey}` with the API key you copied earlier and `{input_file}` with the path to the input file to convert.
 
 ```bash

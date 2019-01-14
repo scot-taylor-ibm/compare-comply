@@ -19,8 +19,8 @@ Compare and Comply
         parsing.md
         doc_structure.md
     
-    tables.md
     compare.md
+    tables.md
     invoices.md 
     feedback.md
     tooling.md
@@ -30,7 +30,7 @@ Compare and Comply
     {: .navgroup id="reference"}
     information-security.md
     at-events.md
-    [API Docs](https://cloud.ibm.com/apidocs/compare-comply)
+    [API reference](https://cloud.ibm.com/apidocs/compare-comply)
     
 
     {: .navgroup-end}
