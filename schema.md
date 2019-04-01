@@ -2,7 +2,7 @@
 
 copyright:
 years: 2018, 2019
-lastupdated: "2019-04-01"
+lastupdated: "2019-03-14"
 
 subcollection: compare-comply
 
@@ -183,17 +183,7 @@ After a document is processed by the `/v1/element_classification` method, the se
           ]
         },
         ...
-      ],
-      "contexts": [
-        {
-          "text": string,
-          "location": {
-            "begin": int,
-            "end": int
-          }
-        },
-        ...
-      ]
+      ]      
     },
     ...
   ],
@@ -229,16 +219,7 @@ After a document is processed by the `/v1/element_classification` method, the se
             "end": int
           },
           ...
-        ],
-    "paragraphs": [
-      {
-        "location": {
-           "begin": int,
-           "end": int
-         }
-      },
-      ...
-    ]
+        ]
       },
       ...
     ]
@@ -330,7 +311,7 @@ The schema is arranged as follows.
       - `label`: A string that lists the identified category. You can find a list of [categories](/docs/services/compare-comply?topic=compare-comply-contract_parsing#contract_categories) in [Understanding element classification](/docs/services/compare-comply?topic=compare-comply-contract_parsing).
       - `provenance_ids`: An array of one or more hashed values that you can send to IBM to provide feedback or receive support.
     - `attributes`: An array that identifies document attributes. Each object in the array consists of three elements:
-      - `type`: The type of attribute. Possible values are `Currency`, `DateTime`, `DefinedTerm`, `Duration`, `Location`, `Number`, `Organization`, `Percentage`, and `Person` as described at [Attributes](/docs/services/compare-comply?topic=compare-comply-contract_parsing#attributes).
+      - `type`: The type of attribute. Possible values are `Currency`, `DateTime`, `Duration`, `Location`, `Organization`, `Percentage`, and `Person`.
       - `text`: The text that is associated with the attribute.
       - `location`: The location of the attribute as defined by its `begin` and `end` indexes.
   - `tables`\*: An array that defines the tables identified in the input document.
@@ -392,21 +373,16 @@ The schema is arranged as follows.
         - `cell_id`: The unique ID of the value in the table.
         - `location`: The location of the value cell in the input document as defined by its `begin` and `end` indexes.  
         - `text`: The text content of the table cell without HTML markup.
-    - `contexts`: An array of contextual entities that are from outside the current table in the input document but that are related to the current table. The array does _not_ include section titles from outside the table. Each object in the array consists of the following elements:
-      - `text`: The text contents of the contextual entry from the input document without associated markup.
-      - `location`: The location of the contextual entry in the input document as defined by its `begin` and `end` indexes.
   - `document_structure`: An object that describes the structure of the input document.
     - `section_titles`: An array that contains one object per section or subsection that is detected in the input document. Sections and subsections are not nested. Instead, they are flattened out and can be placed back in order by using the `begin` and `end` values of the element and the `level` value of the section.
       - `text`: A string that lists the section title, if detected.
       - `location`: The location of the title in the input document as defined by its `begin` and `end` indexes.
       - `level`: An integer that indicates the level at which the section is located in the input document. For example,  represents a top-level section,  represents a subsection within the level  section.
       - `element_locations`: An array that specifies the `begin` and `end` values of the sentences in the section.
-    - `leading_sentences`: An array that contains one object per leading sentence of a list or subsection, in parallel with the `section_titles` and `paragraph` arrays. The object details the leading sentences in the matching section or subsection. As in the `section_titles` array, the objects are not nested; instead, they are flattened out and can be placed back in order by using the `begin` and `end` values of the element or any level markers in the input document.
+    - `leading_sentences`: An array that contains one object per section or subsection, in parallel with the `section_titles` array, that details the leading sentences in the matching section or subsection. As in the `section_titles` array, the objects are not nested; instead, they are flattened out and can be placed back in order by using the `begin` and `end` values of the element or any level markers in the input document.
       - `text`: A string that lists the leading sentence, if detected.
       - `location`: The location of the leading sentence in the input document as defined by its `begin` and `end` indexes.
       - `element_locations`: An array that specifies the `begin` and `end` values of the leading sentences in the section.
-    - `paragraphs`: An array containing one object per paragraph, in parallel with the `section_titles` and `leading_sentences` arrays. Each object lists the span (beginning and end location) of the corresponding paragraph.
-      - `location`: The location of the paragraph in the input document as defined by its `begin` and `end` indexes.
   - `parties`: An array that defines the parties that are identified by the service.
     - `party`: A string value that identifies the party.
     - `role`: A string value that identifies the role of the party.
