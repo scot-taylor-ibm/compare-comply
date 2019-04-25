@@ -36,13 +36,15 @@ This short tutorial introduces IBM Watson&reg; Compare and Comply and goes throu
 This tutorial uses the `/v1/element_classification` method. Other service methods have similar input syntax and output formats. For more information, see the pages for other methods.
 
 **Get started with the tooling**
+
 Optionally, you can explore the service's features by using the Compare and Comply tooling. See [Using the Compare and Comply Tooling ](/docs/services/compare-comply?topic=compare-comply-using_tool) for more information.
 
 **Request Limited Preview Features**
+
 Compare and Comply has the following beta and experimental features that can be accessed by request:
 
   -  Invoice Understanding: Compare and Comply finds and extracts important information such as buyer, supplier, invoice date, and amount owed. Please fill out the following [form](http://ibm.biz/invoices) to request access to this feature.
-  - Purchase-order Parsing: Compare and Comply parses and classifies the contents of purchase orders. Please fill out the following [form](https://datasciencex.typeform.com/to/Fjyf6t) to request access to this feature.
+  - Purchase Order Understanding: Compare and Comply extracts important information in purchase orders. Please fill out the following [form](https://datasciencex.typeform.com/to/Fjyf6t) to request access to this feature.
 
 ## Before you begin
 {: #gs-before-you-begin}
