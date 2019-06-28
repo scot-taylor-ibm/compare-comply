@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2018-06-19"
+lastupdated: "2018-06-27"
 
 subcollection: compare-comply
 
@@ -259,6 +259,6 @@ Each of the arrays contains zero or more objects that list the following items:
 You successfully classified a contract to identify its elements, tables, structure, parties, and other information. You can use the analysis to quickly understand and enforce the classified contract. The next steps are:
 
  - [Understanding element classification](/docs/services/compare-comply?topic=compare-comply-contract_parsing)
- - [Classifying elements](/docs/services/compare-comply?topic=compare-comply-output_schema) and [classifying tables](/docs/services/compare-comply?compare-comply-understanding_tables)
+ - [Classifying elements](/docs/services/compare-comply?topic=compare-comply-output_schema) and [classifying tables](/docs/services/compare-comply?topic=compare-comply-understanding_tables)
 
 
